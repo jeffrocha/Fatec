@@ -1,13 +1,16 @@
-import os    # MÛdulo dos Python 
-import time 
-import sys  
-area = 0  # vari·veis
-raio = 0   
-pi = 3.14 
-raio = input('Digite o valor do raio:') # ler raio 
-area =  (float(raio) ** 2)  *  pi # calcula a area
-os.system("clear") # apaga a tela
-print('\n') # pula uma linha
-print (f'A area ser·:{area:.3f}') #exibe area 
-time.sleep(5) #pausa de 5 segundos 
-sys.exit # forÁa a finalizaÁ„o do programa
+import os  # M√≥dulo dos Python
+import sys
+import time
+from encodings import utf_8
+
+coding: utf_8  # type: ignore
+area = 0  # vari√°veis
+raio = 0
+pi = 3.14
+raio = input('Digite o valor do raio:')  # ler raio
+area = (float(raio) ** 2) * pi  # calcula a area
+os.system("clear")  # apaga a tela
+print('\n')  # pula uma linha
+print(f'A area ser√°:{area:.3f}')  # exibe area
+time.sleep(5)  # pausa de 5 segundos
+sys.exit  # for√ßa a finaliza√ß√£o do programa

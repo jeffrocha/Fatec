@@ -1,0 +1,13 @@
+primeiro precisa criar a pasta do ambiente virtual pelo terminal
+dentro da pasta do projeto com o comando
+
+py -m venv venv
+(pode ser python tbm, verifica teste com py --version)
+
+após isso é preciso entrar no POWERSHELL como adm e
+ forçar habilitação nele
+
+Set-ExecutionPolicy Unrestricted -Force
+
+depois digitar no terminal dentro da pasta do projeto
+.\venv\scripts\activate.ps1
