@@ -1,13 +1,10 @@
 import os
 import sys
 import time
-from encodings import utf_8
-
-coding: utf_8
 
 os.system('cls||clear')
 
-area = 0
+area = 0.0
 base = 0
 altura = 0
 
