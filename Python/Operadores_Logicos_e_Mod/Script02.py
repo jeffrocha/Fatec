@@ -12,11 +12,7 @@ import math
 import os
 import sys
 import time
-from ast import match_case
-from difflib import Match
 from encodings import utf_8
-from operator import truediv
-from statistics import median
 
 coding: utf_8
 
