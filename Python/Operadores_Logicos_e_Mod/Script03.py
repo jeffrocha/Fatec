@@ -1,5 +1,5 @@
 # 3.	Escreva um programa para ler 3 valores inteiros e escrever o maior deles.
-#  Considere que o usu·rio n„o informar· valores iguais, valores nulos ou valores negativos.
+#  Considere que o usu√°rio n√£o informar√° valores iguais, valores nulos ou valores negativos.
 #
 
 import os
@@ -27,6 +27,7 @@ while True:
         continue
     elif (ValNum[1] == ValNum[0]):
         print('Segundo Valor igual o primeiro, digite novamente\n')
+        continue
     else:
         break
 while True:
