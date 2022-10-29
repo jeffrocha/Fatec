@@ -27,4 +27,4 @@ while True:
 
 while ValRep <= ValMult:
     print(ValNum, ' X ', ValRep, ' = ', (ValNum * ValRep))
-    ValRep = ValRep+1
+    ValRep += 1
