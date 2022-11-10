@@ -11,7 +11,6 @@ coding: 8859-1
 
 os.system('cls||clear')
 ValNum = [0, 0, 0]
-ValIndex = 0
 
 while True:
     ValNum[0] = int(input('\nDigite o primeiro valor: '))
