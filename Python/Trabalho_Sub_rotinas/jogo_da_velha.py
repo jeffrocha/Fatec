@@ -1,4 +1,3 @@
-
 import os
 from encodings import utf_8
 
@@ -32,7 +31,7 @@ def JgDaVelha():
 
     def Turno(jogador):
         espaco_colocado = PegarNumero() - 1
-        if Valtab[espaco_colocado] == "X" or Valtab[espaco_colocado] == "O":
+        if Valtab[espaco_colocado] == '\033[31m'+"X"+'\033[0;0m' or Valtab[espaco_colocado] == '\033[34m'+"O"+'\033[0;0m':
             print("\nEspaco ja ocupado. Tente colocar em outro.")
             Turno(jogador)
         else:
@@ -58,7 +57,7 @@ def JgDaVelha():
                                     return True
 
         for a in range(9):
-            if Valtab[a] == "X" or Valtab[a] == "O":
+            if Valtab[a] == '\033[31m'+"X"+'\033[0;0m' or Valtab[a] == '\033[34m'+"O"+'\033[0;0m':
                 jogadas += 1
             if jogadas == 9:
                 print("O jogo acabou em um empate\n")
