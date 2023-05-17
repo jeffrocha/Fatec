@@ -1,0 +1,36 @@
+Strings
+Strings são utilizadas quando é necessário processar texto (como nomes de todos os tipos, endereços, romances, etc.), não números.
+
+Já sabe um pouco sobre elas. Por exemplo, que as strings precisam de aspas da mesma forma que floats precisam de pontos.
+
+Esta é uma string muito típica: "I am a string."
+
+
+No entanto, há um senão. O senão é como codificar uma aspa dentro de uma string que já está delimitada por aspas.
+
+Vamos supor que queremos imprimir uma mensagem muito simples dizendo:
+
+I like "Monty Python"
+
+Como fazemos isto sem gerar um erro? Existem duas soluções possíveis.
+
+
+A primeira baseia-se no conceito que já conhecemos do caratere de escape, que como se deve lembrar é representado pela barra invertida. A barra invertida também pode escapar às aspas. Uma aspa precedida por uma barra invertida muda o seu significado - não é um delimitador, mas apenas uma aspa. Isto funcionará como pretendido:
+
+print("I like \"Monty Python\"")
+
+
+Nota: existem duas aspas escapadas dentro da string - consegue vê-las?
+
+A segunda solução pode ser um pouco surpreendente. O Python pode utilizar uma apóstrofe em vez de uma aspa. Qualquer um destes carateres pode delimitar strings, mas deve ser consistente.
+
+Se abrir uma string com uma aspa, tem de fechá-la com uma aspa.
+
+Se começar uma string com uma apóstrofe, tem de a acabar com uma apóstrofe.
+
+Este exemplo também funcionará:
+
+print('I like "Monty Python"')
+
+
+Nota: não precisa de fazer nenhum escape aqui.

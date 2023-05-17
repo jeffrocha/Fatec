@@ -1,0 +1,19 @@
+Quando quiser usar números muito grandes ou muito pequenos, pode usar notação científica.
+
+
+Tome, por exemplo, a velocidade da luz, expressa em metros por segundo. Escrito diretamente, ficaria assim: 300000000.
+
+Para evitar escrever tantos zeros, os livros de física utilizam uma forma abreviada, que provavelmente já viu: 3 x 108.
+
+Lê-se: três vezes dez à potência de oito.
+
+Em Python, o mesmo efeito é conseguido de uma forma ligeiramente diferente - veja:
+
+3E8
+
+A letra E (também pode utilizar a letra minúscula e - vem da palavra expoente) é um registo conciso da frase vezes dez à potência de.
+
+Nota:
+
+o expoente (o valor após o E) deve ser um número inteiro;
+a base (o valor à frente do E) pode ser um inteiro.
