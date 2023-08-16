@@ -1,3 +1,8 @@
+#include <iostream>
+#include "cstdlib"
+#include "math.h"
+using namespac std;
+
 double const pi = 3.14; // constante
 double altura = 5.55; // variável global
 void verVolume ( double raio ); // declaração
