@@ -1,3 +1,6 @@
+/************************************* 
+utilização da função struct 
+**************************************/
 #include "iostream"
 #include "cstdlib"
 #include "string.h"
