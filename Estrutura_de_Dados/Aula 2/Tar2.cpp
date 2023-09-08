@@ -79,24 +79,34 @@ void ler20AeBconsC(){
 seguintes lei de formação: “Todo elemento de B deverá ser o quadrado do elemento de A
 correspondente”. Apresentar as matrizes A e B.*/
 void ler15AeMontB(){
-    const int tamanhoVetor=5;
+    const int tamanhoVetor=15;
     int VetorA[tamanhoVetor];
-    int VetorB[tamanhoVetor];
+    float VetorB[tamanhoVetor];
     cout << "Digite 15 elementos do vetor A:" <<endl;
     for (int i=0;i<tamanhoVetor;i++){
         cout<<"Elemento A "<<i+1<<": ";
         cin>> VetorA[i];
         }
     for (int i=0;i<tamanhoVetor;i++){
-        VetorB[i]=VetorA[i]^2; 
+        VetorB[i]=VetorA[i]*VetorA[i]; 
     }
     cout<<"           VetorA | VetorB "<<endl;
     for(int i=0;i<tamanhoVetor;i++){
-        cout<<"Elemento"<<i+1<<": "<<VetorA[i]<<"     | "<<VetorB[i]<<endl;
+        cout<<"Elemento"<<i+1<<": "<<VetorA[i]<<"      | "<<VetorB[i]<<endl;
     }
-
-    
 }
+/* e)Ler duas matrizes A e B do tipo vetor com 15 elementos cada. Construir uma matriz C, sendo esta a
+junção das duas outras matrizes. Desta forma, C deverá ter o dobro de elementos, ou seja, 30.
+Apresentar a matriz C. */
+
+/* f) Ler duas matrizes do tipo vetor, sendo A com 20 elementos e B com 30 elementos. Construir uma
+matriz C, sendo esta a junção das duas outras matrizes. Desta forma, C deverá ter a capacidade de
+armazenar 50 elementos. Apresentar a matriz C.*/
+
+/* g) Ler 20 elementos de uma matriz A tipo vetor e construir uma matriz B de mesma dimensão com os
+mesmo elementos da matriz A, sendo que deverão estar invertidos. Ou seja, o primeiro elemento de
+A passa a ser o último de B, o segundo elemento de A passa a ser o penúltimo elemento de B e
+assim por diante. Apresentar as matrizes A e B lado a lado. */
     
 int main()
 {
@@ -106,3 +116,4 @@ int main()
     ler15AeMontB();
     return 0;
 }
+
