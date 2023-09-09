@@ -159,13 +159,58 @@ void ler20AeInvert20emB()
 
 int main()
 {
-    //ler10elementos();
-    //ler8MatrizAeB();
-    //ler20AeBconsC();
-    //ler15AeMontB();
-    //ler15AeBeMont30C();
-    //ler20Ae30BeMont50C();
-    //ler20AeInvert20emB();
+    int opcao;
+    do {
+    cout << "Menu(Escolha o numero de 1 a 8)" << endl;
+    cout << "1. A)Ler 10 e apresentar" << endl;
+    cout << "2. B)Ler 8 em A e multiplicar por 3 em B" << endl;
+    cout << "3. C)Ler 20 A e B com cons C" << endl;
+    cout << "4. D)Ler 15 A e montar B" << endl;
+    cout << "5. E)Ler 15 A e B e montar 30 C" << endl;
+    cout << "6. F)Ler 20 A e 30 B e montar 50 C" << endl;
+    cout << "7. G)Ler 20 A e inverter 20 em B" << endl;
+    cout << "8. Encerrar o programa" << endl;
+    cout << "Escolha uma opção: ";
+    cin >> opcao;
+    switch(opcao){
+     case 1:
+                ler10elementos();
+                system("sleep 3");
+                break;
+            case 2:
+                ler8MatrizAeB();
+                system("sleep 3");
+                break;
+            case 3:
+                ler20AeBconsC();
+                system("sleep 3");
+                break;
+            case 4:
+                ler15AeMontB();
+                system("sleep 3");
+                break;
+            case 5:
+                ler15AeBeMont30C();
+                system("sleep 3");
+                break;
+            case 6:
+                ler20Ae30BeMont50C();
+                system("sleep 3");
+                break;
+            case 7:
+                ler20AeInvert20emB();
+                system("sleep 3");
+                break;
+            case 8:
+                cout << "Encerrando o programa." << endl;
+                cout<<" Obrigado! "<<endl;
+                system("sleep 3");
+                break;
+            default:
+                cout << "Opção inválida. Tente novamente." << endl;
+                break;
+        }
+    } while (opcao != 8);
+
     return 0;
 }
-
