@@ -1,10 +1,3 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
 #include <iostream>
 #include <vector>
 
@@ -149,19 +142,21 @@ assim por diante. Apresentar as matrizes A e B lado a lado. */
 void Ler20AeInvert20emB()
 {
     const int tamanhoVetorAB=20;
-    int VetorA=tamanhoVetorAB;
-    int vetorB=tamanhoVetorAB;
-    cont<<"Digite "<<tamanhoVetorAB<<" Elementos de A e o B será o inverso da sequencia"<<endl;
+    int VetorA[tamanhoVetorAB];
+    int VetorB[tamanhoVetorAB];
+    cout<<"Digite "<<tamanhoVetorAB<< " Elementos do Vetor A e Vetor B sera o inverso"<<endl;
+    
     for (int i=0;i<tamanhoVetorAB;i++){
         cout<<"Elemento A "<<i+1<<": ";
         cin>>VetorA[i];
-        vetorB[i-tamanhoVetorAB];=VetorA[i];
+        VetorB[tamanhoVetorAB-(i+1)]=VetorA[i];
     }
-    cout<<"Elemento A  | Elemento B"<<endl;
+    cout<<"Elemento A  \t| Elemento B"<<endl;
     for(int i=0;i<tamanhoVetorAB;i++){
-        cout<<i+1<<VetorA[i]<<"    |"<<vetorB[i]<<endl;
+        cout<<i+1<<" = " <<VetorA[i]<<"\t\t|"<<VetorB[i]<<endl;
     }
 }
+
 int main()
 {
     //ler10elementos();
@@ -170,7 +165,7 @@ int main()
     //ler15AeMontB();
     //ler15AeBeMont30C();
     //ler20Ae30BeMont50C();
-    Ler20AeInvert20emB()
+    //Ler20AeInvert20emB();
     return 0;
 }
 
