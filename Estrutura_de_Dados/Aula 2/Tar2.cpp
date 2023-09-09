@@ -139,7 +139,7 @@ mesmo elementos da matriz A, sendo que deverão estar invertidos. Ou seja, o pri
 A passa a ser o último de B, o segundo elemento de A passa a ser o penúltimo elemento de B e
 assim por diante. Apresentar as matrizes A e B lado a lado. */
 
-void Ler20AeInvert20emB()
+void ler20AeInvert20emB()
 {
     const int tamanhoVetorAB=20;
     int VetorA[tamanhoVetorAB];
@@ -165,7 +165,7 @@ int main()
     //ler15AeMontB();
     //ler15AeBeMont30C();
     //ler20Ae30BeMont50C();
-    //Ler20AeInvert20emB();
+    //ler20AeInvert20emB();
     return 0;
 }
 
