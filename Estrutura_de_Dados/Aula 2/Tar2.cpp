@@ -81,7 +81,7 @@ correspondente”. Apresentar as matrizes A e B.*/
 void ler15AeMontB(){
     const int tamanhoVetor=15;
     int VetorA[tamanhoVetor];
-    float VetorB[tamanhoVetor];
+    int VetorB[tamanhoVetor];
     cout << "Digite 15 elementos do vetor A:" <<endl;
     for (int i=0;i<tamanhoVetor;i++){
         cout<<"Elemento A "<<i+1<<": ";
@@ -99,21 +99,78 @@ void ler15AeMontB(){
 junção das duas outras matrizes. Desta forma, C deverá ter o dobro de elementos, ou seja, 30.
 Apresentar a matriz C. */
 
+void ler15AeBeMont30C(){
+    const int tamanhoVetorAB=15;
+    const int tamanhoVetorC=30;
+    int VetorA[tamanhoVetorAB];
+    int VetorB[tamanhoVetorAB];
+    int VetorC[tamanhoVetorC];
+    cout<<"Digite 15 Elementos do Vetor A e B"<<endl;
+    for (int i=0;i<tamanhoVetorAB;i++){
+        cout<<"Elemento A "<<i+1<<": ";
+        cin>>VetorA[i];
+        VetorC[i]=VetorA[i];}
+    for (int i=0;i<tamanhoVetorAB;i++){
+        cout<<"Elemento B "<<i+1<<": ";
+        cin>>VetorB[i];
+        VetorC[i+tamanhoVetorAB]=VetorB[i];}
+    for (int i=0;i<tamanhoVetorC;i++){
+        cout<<"Elemento C"<<i+1<<": "<<VetorC[i]<<endl;}
+    }
+
 /* f) Ler duas matrizes do tipo vetor, sendo A com 20 elementos e B com 30 elementos. Construir uma
 matriz C, sendo esta a junção das duas outras matrizes. Desta forma, C deverá ter a capacidade de
 armazenar 50 elementos. Apresentar a matriz C.*/
+void ler20Ae30BeMont50C(){
+    const int tamanhoVetorA=20;
+    const int tamanhoVetorB=30;
+    const int tamanhoVetorC=tamanhoVetorA+tamanhoVetorB;
+    int VetorA[tamanhoVetorA];
+    int VetorB[tamanhoVetorB];
+    int VetorC[tamanhoVetorC];
+    cout<<"Digite "<<tamanhoVetorA<< " Elementos do Vetor A e "<<tamanhoVetorB<<" Vetor B"<<endl;
+    for (int i=0;i<tamanhoVetorA;i++){
+        cout<<"Elemento A "<<i+1<<": ";
+        cin>>VetorA[i];
+        VetorC[i]=VetorA[i];}
+    for (int i=0;i<tamanhoVetorB;i++){
+        cout<<"Elemento B "<<i+1<<": ";
+        cin>>VetorB[i];
+        VetorC[i+tamanhoVetorA]=VetorB[i];}
+    for (int i=0;i<tamanhoVetorC;i++){
+        cout<<"Elemento C"<<i+1<<": "<<VetorC[i]<<endl;}
+    }
 
 /* g) Ler 20 elementos de uma matriz A tipo vetor e construir uma matriz B de mesma dimensão com os
 mesmo elementos da matriz A, sendo que deverão estar invertidos. Ou seja, o primeiro elemento de
 A passa a ser o último de B, o segundo elemento de A passa a ser o penúltimo elemento de B e
 assim por diante. Apresentar as matrizes A e B lado a lado. */
-    
+
+void Ler20AeInvert20emB()
+{
+    const int tamanhoVetorAB=20;
+    int VetorA=tamanhoVetorAB;
+    int vetorB=tamanhoVetorAB;
+    cont<<"Digite "<<tamanhoVetorAB<<" Elementos de A e o B será o inverso da sequencia"<<endl;
+    for (int i=0;i<tamanhoVetorAB;i++){
+        cout<<"Elemento A "<<i+1<<": ";
+        cin>>VetorA[i];
+        vetorB[i-tamanhoVetorAB];=VetorA[i];
+    }
+    cout<<"Elemento A  | Elemento B"<<endl;
+    for(int i=0;i<tamanhoVetorAB;i++){
+        cout<<i+1<<VetorA[i]<<"    |"<<vetorB[i]<<endl;
+    }
+}
 int main()
 {
     //ler10elementos();
     //ler8MatrizAeB();
     //ler20AeBconsC();
-    ler15AeMontB();
+    //ler15AeMontB();
+    //ler15AeBeMont30C();
+    //ler20Ae30BeMont50C();
+    Ler20AeInvert20emB()
     return 0;
 }
 
