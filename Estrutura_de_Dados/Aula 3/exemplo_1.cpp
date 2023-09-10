@@ -30,11 +30,9 @@ using namespace std;
 
 int xy[] = { 1, 5, 10, -1 };
 
-void maiorMenor () 
+void maiorMenor (int &maior, int &menor) 
 {
-int maior, menor;
 int tot = sizeof (xy) / sizeof (int);
-
 for (int i = 0; i < tot; i++)
 {
     if (xy[i] > maior || i == 0)
@@ -43,13 +41,38 @@ for (int i = 0; i < tot; i++)
     if (xy[i] < menor || i == 0)
 	menor = xy[i];
 }
-  
-cout << "\nMaior: " << maior;
-cout << "\nMenor: " << menor << endl;
-getchar();
+
 }
 
 int main (){
-maiorMenor ();
+int maior,menor,opcao;
+maiorMenor (maior, menor);
+do{
+    cout<<"Digite a uma opção"<<endl;
+    cout<<"1 - Maior Valor"<<endl;
+    cout<<"2 - Menor Valor"<<endl;
+    cout<<"3 - Sair"<<endl;
+    cin>>opcao;
+    switch(opcao){
+        case 1:
+            cout<<"Maior Valor: "<<maior<<endl<<endl;
+            break;
+            
+        case 2:
+            cout<<"Menor Valor"<<menor<<endl<<endl;
+            break;
+            
+        case 3:
+            cout << "Encerrando o programa." << endl<<endl;
+            cout<<" Obrigado! "<<endl;
+            break;
+            
+        default:
+            cout << "Opção inválida. Tente novamente." << endl<<endl;
+            break;
+        }
+        system("sleep 3");
+    } while (opcao != 3);
 return 0;
 }
+
