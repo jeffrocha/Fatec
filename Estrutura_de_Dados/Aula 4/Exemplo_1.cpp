@@ -41,7 +41,7 @@ void guardarDados ( )
 
 void exibir() 
 { 
-    system("cls");
+    system("clear, cls");
  
     for(int i=0;i<=linha;i++) 
     {
@@ -58,7 +58,7 @@ int main()
     int tecla=0;
         while (tecla != 3) 
             { 
-            system("clear");
+            system("clear, cls");
             cout<< "\n1 Ler\n2 Exibir\n3 Sair\nitem:";
             cin >> tecla;
             switch(tecla) 
