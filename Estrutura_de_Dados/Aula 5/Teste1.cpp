@@ -32,14 +32,14 @@ public:
             
             cout << "Digite a idade: ";
             while (!(cin >> novoRegistro.idade) || novoRegistro.idade < 0) {
-                cout << "Idade inv·lido. Digite novamente: ";
+                cout << "Idade inv√°lido. Digite novamente: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
 
-            cout << "Digite o sal·rio: ";
+            cout << "Digite o sal√°rio: ";
             while (!(cin >> novoRegistro.salario) || novoRegistro.salario < 0.0) {
-                cout << "sal·rio inv·lido. Digite novamente: ";
+                cout << "sal√°rio inv√°lido. Digite novamente: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
@@ -48,7 +48,7 @@ public:
             pilha[topo] = novoRegistro;
             cout << "Registro empilhado com sucesso!" << endl;
         } else {
-            cout << "A pilha est„o cheia. n„o È possÌvel empilhar mais registros." << endl;
+            cout << "A pilha est√£o cheia. n√£o √© poss√≠vel empilhar mais registros." << endl;
         }
     }
 
@@ -57,19 +57,19 @@ public:
             topo--;
             cout << "Registro desempilhado com sucesso!" << endl;
         } else {
-            cout << "A pilha est„o vazia. n„o È possÌvel desempilhar registros." << endl;
+            cout << "A pilha est√£o vazia. n√£o √© poss√≠vel desempilhar registros." << endl;
         }
     }
 
     void mostrar() {
         if (!vazia()) {
             cout << "Registros na pilha:" << endl;
-            cout << left << setw(20) << "Nome" << setw(10) << "Idade" << setw(15) << "sal·rio" << endl;
+            cout << left << setw(20) << "Nome" << setw(10) << "Idade" << setw(15) << "sal√°rio" << endl;
             for (int i = topo; i >= 0; i--) {
                 cout << left << setw(20) << pilha[i].nome << setw(10) << pilha[i].idade << setw(15) << fixed << setprecision(2) << pilha[i].salario << endl;
             }
         } else {
-            cout << "A pilha est„o vazia." << endl;
+            cout << "A pilha est√£o vazia." << endl;
         }
     }
 
@@ -84,18 +84,18 @@ public:
 
 int tela() {
     int opcao;
-    cout << "Escolha uma opÁ„o:" << endl;
+    cout << "Escolha uma op√ß√£o:" << endl;
     cout << "1. Empilhar registro" << endl;
     cout << "2. Mostrar registros" << endl;
     cout << "3. Desempilhar registro" << endl;  
     cout << "4. Sair" << endl;
-    cout << "opÁ„o: ";
+    cout << "op√ß√£o: ";
     cin >> opcao;
     return opcao;
 }
 
 int main() {
-    // Configura√ß√£o da localiza√ß√£o para pt-BR
+    setlocale(LC_ALL, "Portuguese");
     LIFO lifo;
     int opcao;
     system("cls");
@@ -115,7 +115,7 @@ int main() {
                 cout << "Encerrando o programa." << endl;
                 break;
             default:
-                cout << "opÁ„o inv·lido. Tente novamente." << endl;
+                cout << "op√ß√£o inv√°lido. Tente novamente." << endl;
         }
     } while (opcao != 4);
 
