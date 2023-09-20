@@ -34,7 +34,6 @@ cabe mais elementos
 #include <string>
 #include <iomanip>
 #include <limits>
-#include <locale>
 
 using namespace std;
 
@@ -56,6 +55,14 @@ public:
         topo = -1;
     }
 
+    bool cheia() const {
+        return topo >= MAX - 1;
+    }
+
+    bool vazia() const {
+        return topo == -1;
+    }
+
     void push() {
         if (!cheia()) {
             Registro novoRegistro;
@@ -64,14 +71,14 @@ public:
             
             cout << "Digite a idade: ";
             while (!(cin >> novoRegistro.idade) || novoRegistro.idade < 0) {
-                cout << "Idade inválido. Digite novamente: ";
+                cout << "Idade inválida. Digite novamente: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
 
             cout << "Digite o salário: ";
             while (!(cin >> novoRegistro.salario) || novoRegistro.salario < 0.0) {
-                cout << "salário inválido. Digite novamente: ";
+                cout << "Salário inválido. Digite novamente: ";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
@@ -80,7 +87,7 @@ public:
             pilha[topo] = novoRegistro;
             cout << "Registro empilhado com sucesso!" << endl;
         } else {
-            cout << "A pilha estão cheia. não é possível empilhar mais registros." << endl;
+            cout << "A pilha está cheia. Não é possível empilhar mais registros." << endl;
         }
     }
 
@@ -89,18 +96,53 @@ public:
             topo--;
             cout << "Registro desempilhado com sucesso!" << endl;
         } else {
-            cout << "A pilha estão vazia. não é possível desempilhar registros." << endl;
+            cout << "A pilha está vazia. Não é possível desempilhar registros." << endl;
         }
     }
 
     void mostrar() {
         if (!vazia()) {
             cout << "Registros na pilha:" << endl;
-            cout << left << setw(20) << "Nome" << setw(10) << "Idade" << setw(15) << "salário" << endl;
+            cout << left << setw(20) << "Nome" << setw(10) << "Idade" << setw(15) << "Salário" << endl;
             for (int i = topo; i >= 0; i--) {
                 cout << left << setw(20) << pilha[i].nome << setw(10) << pilha[i].idade << setw(15) << fixed << setprecision(2) << pilha[i].salario << endl;
             }
         } else {
-            cout << "A pilha estão vazia." << endl;
+            cout << "A pilha está vazia." << endl;
         }
     }
+};
+
+int main() {
+    LIFO pilha;
+
+    int escolha;
+    do {
+        cout << "\nEscolha uma operação:" << endl;
+        cout << "1. Empilhar um registro" << endl;
+        cout << "2. Desempilhar um registro" << endl;
+        cout << "3. Mostrar registros" << endl;
+        cout << "4. Sair" << endl;
+        cout << "Opção: ";
+        cin >> escolha;
+
+        switch (escolha) {
+            case 1:
+                pilha.push();
+                break;
+            case 2:
+                pilha.pop();
+                break;
+            case 3:
+                pilha.mostrar();
+                break;
+            case 4:
+                cout << "Saindo do programa." << endl;
+                break;
+            default:
+                cout << "Opção inválida. Tente novamente." << endl;
+        }
+    } while (escolha != 4);
+
+    return 0;
+}
