@@ -31,24 +31,76 @@ cabe mais elementos
 */
 
 #include <iostream>
-#include <cstdlib>
 #include <string>
+#include <iomanip>
+#include <limits>
+#include <locale>
+
 using namespace std;
 
-int max=-1;
+const int MAX = 50;
 
-typedef struct lifo Pessoa;
-struct  lifo{
-    string nome[max];
-    int idade[max];
-    float salario[max];
-}
+struct Registro {
+    string nome;
+    int idade;
+    double salario;
+};
 
-Pessoa P1
+class LIFO {
+private:
+    Registro pilha[MAX];
+    int topo;
 
-push() //para empilhar o registro
-pop()// para remover registros
-int mostrar()// para mostrar os registros da LIFO
-bool cheia()// verificar se a LIFO está cheia
-bool vazia()// verificar se a LIFO está vazia
+public:
+    LIFO() {
+        topo = -1;
+    }
 
+    void push() {
+        if (!cheia()) {
+            Registro novoRegistro;
+            cout << "Digite o nome: ";
+            cin >> novoRegistro.nome;
+            
+            cout << "Digite a idade: ";
+            while (!(cin >> novoRegistro.idade) || novoRegistro.idade < 0) {
+                cout << "Idade inválido. Digite novamente: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+
+            cout << "Digite o salário: ";
+            while (!(cin >> novoRegistro.salario) || novoRegistro.salario < 0.0) {
+                cout << "salário inválido. Digite novamente: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            
+            topo++;
+            pilha[topo] = novoRegistro;
+            cout << "Registro empilhado com sucesso!" << endl;
+        } else {
+            cout << "A pilha estão cheia. não é possível empilhar mais registros." << endl;
+        }
+    }
+
+    void pop() {
+        if (!vazia()) {
+            topo--;
+            cout << "Registro desempilhado com sucesso!" << endl;
+        } else {
+            cout << "A pilha estão vazia. não é possível desempilhar registros." << endl;
+        }
+    }
+
+    void mostrar() {
+        if (!vazia()) {
+            cout << "Registros na pilha:" << endl;
+            cout << left << setw(20) << "Nome" << setw(10) << "Idade" << setw(15) << "salário" << endl;
+            for (int i = topo; i >= 0; i--) {
+                cout << left << setw(20) << pilha[i].nome << setw(10) << pilha[i].idade << setw(15) << fixed << setprecision(2) << pilha[i].salario << endl;
+            }
+        } else {
+            cout << "A pilha estão vazia." << endl;
+        }
+    }
