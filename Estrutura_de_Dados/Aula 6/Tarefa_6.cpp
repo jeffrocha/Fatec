@@ -36,3 +36,103 @@ f) ler_salario ( )
 g) getAumento ( double * salario ) // aumento de 10% sobre o salário digitado
 */
 
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Definindo a estrutura Pessoa
+struct Pessoa {
+    string nome;
+    int idade;
+    char sexo;
+    double salario;
+    double salarioNovo;
+};
+
+// Protótipos das funções
+void NovaLinhaStruct(Pessoa &pessoa);
+void listarLinhasStruct(const vector<Pessoa> &pessoas);
+void ler_idade(int &idade);
+void ler_sexo(char &sexo);
+void ler_nome(string &nome);
+void ler_salario(double &salario);
+void getAumento(double &salario);
+
+int main() {
+    int opcao;
+    vector<Pessoa> pessoas;
+
+    do {
+        cout << "\nMenu de Opções" << endl;
+        cout << "1 - Ler Linha" << endl;
+        cout << "2 - Mostrar" << endl;
+        cout << "3 - Sair" << endl;
+        cout << "Escolha uma opção: ";
+        cin >> opcao;
+
+        switch (opcao) {
+            case 1: {
+                Pessoa novaPessoa;
+                NovaLinhaStruct(novaPessoa);
+                pessoas.push_back(novaPessoa);
+                break;
+            }
+            case 2:
+                listarLinhasStruct(pessoas);
+                break;
+            case 3:
+                cout << "Saindo do programa." << endl;
+                break;
+            default:
+                cout << "Opção inválida. Tente novamente." << endl;
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
+void NovaLinhaStruct(Pessoa &pessoa) {
+    ler_nome(pessoa.nome);
+    ler_idade(pessoa.idade);
+    ler_sexo(pessoa.sexo);
+    ler_salario(pessoa.salario);
+    getAumento(pessoa.salario);
+}
+
+void listarLinhasStruct(const vector<Pessoa> &pessoas) {
+    cout << "\nListagem de Pessoas:" << endl;
+    for (const Pessoa &pessoa : pessoas) {
+        cout << "Nome: " << pessoa.nome << endl;
+        cout << "Idade: " << pessoa.idade << endl;
+        cout << "Sexo: " << pessoa.sexo << endl;
+        cout << "Salário Antigo: " << pessoa.salario << endl;
+        cout << "Novo Salário: " << pessoa.salarioNovo << endl;
+    }
+}
+
+void ler_idade(int &idade) {
+    cout << "Digite a idade: ";
+    cin >> idade;
+}
+
+void ler_sexo(char &sexo) {
+    cout << "Digite o sexo (M/F): ";
+    cin >> sexo;
+}
+
+void ler_nome(string &nome) {
+    cin.ignore();
+    cout << "Digite o nome: ";
+    getline(cin, nome);
+}
+
+void ler_salario(double &salario) {
+    cout << "Digite o salário: ";
+    cin >> salario;
+}
+
+void getAumento(double &salario) {
+    salario *= 1.10; // Aumento de 10%
+}
