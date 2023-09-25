@@ -65,7 +65,7 @@ int main() {
     vector<Pessoa> pessoas;
 
     do {
-        cout << "\nMenu de Opções" << endl;
+        cout << "\nMenu" << endl;
         cout << "1 - Ler Linha" << endl;
         cout << "2 - Mostrar" << endl;
         cout << "3 - Sair" << endl;
