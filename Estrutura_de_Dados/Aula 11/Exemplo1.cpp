@@ -59,7 +59,6 @@ void destrutor() {
         free(aux);        // Libera a memória de cada elemento na pilha.
     }
 
-    system("clear||cls");       // Limpa a tela (dependente do sistema operacional).
     cout << "Pilha destruída..!" << endl;  // Exibe uma mensagem indicando que a pilha foi destruída.
     system("sleep 3");             // Aguarda 3 segundos.
 }
@@ -70,7 +69,8 @@ int main() {
     push("teste 2");  plotar();  // Adiciona "teste 2" à pilha e exibe a pilha.
     push("teste 3");  plotar();  // Adiciona "teste 3" à pilha e exibe a pilha.
     pop(); plotar();             // Remove o elemento do topo e exibe a pilha.
-    pop(); plotar();             // Remove o elemento do topo novamente e exibe a pilha.
+    pop(); plotar();
+    pop(); plotar();  // Remove o elemento do topo novamente e exibe a pilha.
     destrutor();                // Destrói a pilha e exibe uma mensagem.
     return 0;
 }
