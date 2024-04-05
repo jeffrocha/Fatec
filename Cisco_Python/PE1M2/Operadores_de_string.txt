@@ -1,0 +1,35 @@
+Operadores de String - introdução
+Chegou o momento de voltar a estes dois operadores aritméticos: + e *.
+
+Queremos mostrar-lhe que eles têm uma segunda função. Eles são capazes de fazer algo mais do que apenas adicionar e multiplicar.
+
+Vimo-los em ação onde os seus argumentos são números (floats ou inteiros, não importa).
+
+Agora vamos mostrar-lhe que eles também conseguem lidar com strings, embora de uma forma muito específica.
+
+
+Concatenação
+O sinal + (mais), quando aplicado a duas strings, torna-se um operador de concatenação:
+
+string + string
+
+Simplesmente concatena (cola) duas strings numa. Claro que, tal como o seu irmão aritmético, pode ser usado mais de uma vez numa expressão, e em tal contexto comporta-se de acordo com a ligação do lado esquerdo.
+
+Em contraste com o seu irmão aritmético, o operador da concatenação não é comutativo, ou seja "ab" + "ba" não é o mesmo que "ba" + "ab".
+
+Não se esqueça - se quiser que o sinal + seja um concatenador, não um adicionador, deve assegurar-se de que ambos os seus argumentos são strings.
+
+Não se podem misturar tipos aqui.
+
+Este programa simples mostra o sinal + na sua segunda utilização:
+
+fnam = input("May I have your first name, please? ")
+lnam = input("May I have your last name, please? ")
+print("Thank you.")
+print("\nYour name is " + fnam + " " + lnam + ".")
+
+
+Nota: usando + para concatenar strings permite construir o output de uma forma mais precisa do que com uma função pura print() , mesmo que enriquecida com os end= e sep= argumentos de keyword.
+
+Execute o código e veja se o output corresponde às suas previsões.
+

@@ -1,0 +1,12 @@
+sep="" 
+  Entre cada expressão na função print ira adicionar o caracterio dentro do aspas
+
+end=""
+  No final função print ele ira adicionar o caracterio dentro do aspas
+
+round() 
+  O seu trabalho é o de arredondar o resultado em output para o número de casas decimais especificadas nos parêntesis, e devolver um float (dentro da round() função pode encontrar o nome da variável, uma vírgula, e o número de casas decimais que pretendemos).
+  
+  Comentario
+# para comentar a linha 
+  Se quiser comentar ou descomentar rapidamente várias linhas de código, selecione a(s) linha(s) que deseja modificar e use o seguinte atalho de teclado: CTRL + / (Windows) ou CMD + / (Mac OS). É um truque muito útil, não é? Experimente este código na Sandbox.

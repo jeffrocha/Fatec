@@ -1,0 +1,31 @@
+Floats
+Agora é altura de falar de outro tipo, que foi concebido para representar e armazenar os números que (como diria um matemático) têm uma fração decimal não vazia.
+
+São os números que têm (ou podem ter) uma parte fracionada após o ponto decimal, e embora tal definição seja muito pobre, é certamente suficiente para o que desejamos discutir.
+
+Sempre que utilizamos um termo como dois e meio ou menos zero ponto quatro, pensamos em números que o computador considera números de floating-point:
+
+2.5
+-0.4
+
+Nota: dois e meio parece normal quando se escreve num programa, embora se a sua língua materna preferir usar uma vírgula em vez de um ponto no número, deve assegurar-se de que o seu número não contém quaisquer vírgulas.
+
+O Python não aceitará isso, ou (em casos muito raros mas possíveis) pode interpretar mal as suas intenções, uma vez que a própria vírgula tem o seu significado reservado em Python.
+
+Se quiser usar apenas um valor de dois e meio, deve escrevê-lo como mostrado acima. Nota mais uma vez - há um ponto entre 2 e 5 - não uma vírgula.
+
+Como provavelmente pode imaginar, o valor de zero ponto quatro pode ser escrito em Python como:
+
+0.4
+
+Mas não se esqueça desta regra simples - pode omitir o zero quando é o único dígito em frente ou após o ponto decimal.
+
+Em essência, pode escrever o valor 0.4 como:
+
+.4
+
+Por exemplo: o valor de 4.0 pode ser escrito como:
+
+4.
+
+Isto não mudará nem o seu tipo nem o seu valor.

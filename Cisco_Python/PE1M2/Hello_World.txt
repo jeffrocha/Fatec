@@ -1,0 +1,20 @@
+Hello, World!
+É tempo de começar a escrever algum código Python real e funcional. Vai ser muito simples por enquanto.
+
+Como vamos mostrar-lhe alguns conceitos e termos fundamentais, estes snippets de código não serão sérios ou complexos.
+
+Execute o código na janela do editor à direita. Se tudo correr bem aqui, verá a linha de texto na janela da consola.
+
+Em alternativa, lançe o IDLE, crie um novo source file Python, preencha-o com este código, nomeie o ficheiro e guarde-o. Agora execute-o. Se tudo correr bem, verá o texto contido dentro das aspas na janela da consola IDLE. O código que executou deve parecer familiar. Viu algo muito semelhante quando o conduzimos através da criação do ambiente IDLE.
+
+Agora vamos passar algum tempo a mostrar e a explicar-lhe o que está realmente a ver, e porque é que se parece com isto.
+
+Como pode ver, o primeiro programa consiste nas seguintes partes:
+
+a palavra print;
+um parêntesis de abertura;
+umas aspas;
+uma linha de texto: Hello, World!;
+outras aspas;
+um parêntesis de fecho.
+Cada um dos itens acima desempenha um papel muito importante no código

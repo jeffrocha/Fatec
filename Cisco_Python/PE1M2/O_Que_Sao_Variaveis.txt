@@ -1,0 +1,30 @@
+O que são variáveis?
+Parece bastante óbvio que o Python deveria permitir-lhe codificar literais transportando valores de número e texto.
+
+Já sabe que pode fazer algumas operações aritméticas com estes números: adicionar, subtrair, etc. Fá-lo-á muitas vezes.
+
+Mas é uma questão bastante normal de perguntar como armazenar os resultados destas operações, a fim de os utilizar noutras operações, e assim por diante.
+
+Como guardar os resultados intermediários, e utilizá-los novamente para produzir os resultados subsequentes?
+
+O Python irá ajudá-lo nisso. Oferece "caixas" especiais (em inglês, containers) para esse fim, e estas caixas são chamadas variáveis - o próprio nome sugere que o conteúdo destes containers pode ser variado em (quase) qualquer forma.
+
+O que tem cada variável Python?
+
+um nome;
+um valor (o conteúdo do container)
+Comecemos com as questões relacionadas com o nome de uma variável.
+
+As variáveis não aparecem automaticamente num programa. Como programador, deve decidir quantas e quais as variáveis a utilizar nos seus programas.
+
+Deve também nomeá-las.
+
+
+Se quiser dar um nome a uma variável, deve seguir algumas regras estritas:
+
+o nome da variável deve ser composto por letras maiúsculas ou minúsculas, dígitos e o caratere _ (underscore)
+o nome da variável deve começar com uma letra;
+o caratere underscore é uma letra;
+letras maiúsculas e minúsculas são tratadas como diferentes (um pouco diferente do que no mundo real - Alice e ALICE são os mesmos nomes próprios, mas em Python são dois nomes de variáveis diferentes, e consequentemente, duas variáveis diferentes);
+o nome da variável não deve ser nenhuma das palavras reservadas de Python (as keywords - explicaremos mais sobre isto em breve).
+O conceito de variáveis como uma caixa

@@ -1,0 +1,29 @@
+Python aka CPython
+Para além do Python 2 e Python 3, existe mais de uma versão de cada uma.
+Logotipo Python Software FoundationEm primeiro lugar, existem os Pythons que são mantidos pelas pessoas reunidas em torno da PSF (Python Software Foundation), uma comunidade que visa desenvolver, melhorar, expandir e popularizar o Python e o seu ambiente. O presidente da PSF é o próprio Guido von Rossum, e por esta razão, estes Pythons são chamados de canónicos. São também considerados Pythons de referência, pois qualquer outra implementação da linguagem deve seguir todas as normas estabelecidas pelo PSF.
+Guido van Rossum utilizou a linguagem de programação "C" para implementar a primeira versão da sua linguagem, e esta decisão ainda está em vigor. Todos os Pythons provenientes do PSF são escritos na linguagem "C". Há muitas razões para esta abordagem e ela tem muitas consequências. Uma delas (provavelmente a mais importante) é que graças a ela, o Python pode ser facilmente portado e migrado para todas as plataformas com a capacidade de compilar e executar programas em linguagem "C" (praticamente todas as plataformas têm esta característica, o que abre muitas oportunidades de expansão para Python).
+É por isso que a implementação da PSF é frequentemente referida como CPython. Este é o Python mais influente entre todos os Pythons do mundo.
+
+Cython
+Outro membro da família Python é o Cython.
+Logotipo CythonO Cython é uma das várias soluções possíveis para a mais dolorosa das características de Python - a falta de eficiência. Grandes e complexos cálculos matemáticos podem ser facilmente codificados em Python (muito mais facilmente do que em "C" ou qualquer outra linguagem tradicional), mas a execução do código resultante pode ser extremamente demorada.
+Como são conciliadas estas duas contradições? Uma solução é escrever as suas ideias matemáticas usando Python, e quando estiver absolutamente seguro de que o seu código está correto e produz resultados válidos, pode traduzi-lo para "C". Certamente, o "C" correrá muito mais rápido do que Python puro.
+É isto que o Cython pretende fazer - traduzir automaticamente o código Python (limpo e claro, mas não demasiado rápido) em código "C" (complicado e falador, mas ágil).
+
+Jython
+Outra versão do Python é chamada Jython.
+“J” é para “Java”. Imagine um Python escrito em Java em vez de C. Isto é útil, por exemplo, se desenvolver sistemas grandes e complexos escritos inteiramente em Java, e quiser acrescentar alguma flexibilidade Python a eles. O CPython tradicional pode ser difícil de integrar em tal ambiente, já que C e Java vivem em mundos completamente diferentes e não partilham muitas ideias comuns.
+Jython pode comunicar com a infra-estrutura Java existente de forma mais eficaz. É por isso que alguns projetos o consideram utilizável e necessário.
+Nota: a atual implementação do Jython segue as normas do Python 2. Até ao momento, não há Jython em conformidade com Python 3.
+Logotipo Jython
+
+
+PyPy e RPython
+Dê uma vista de olhos ao logotipo em baixo. É um rébus. Consegue resolvê-lo?
+Logotipo PyPyÉ um logótipo do PyPy - um Python dentro de um Python. Por outras palavras, representa um ambiente Python escrito em linguagem Python, chamado RPython (Restricted Python). Na verdade, é um subconjunto de Python.
+O source code de PyPy não é executado na forma de interpretação, mas sim traduzido para a linguagem de programação C e depois executado separadamente.
+Isto é útil porque se quiser testar qualquer nova funcionalidade que possa ser (mas não tem de ser) introduzida na implementação do Python convencional, é mais fácil verificá-la com o PyPy do que com o CPython. É por isto que o PyPy é antes uma ferramenta para pessoas que desenvolvem Python, do que para o resto dos utilizadores.
+Isto não torna o PyPy menos importante ou menos sério do que o CPython, é claro.
+Além disso, o PyPy é compatível com a linguagem do Python 3.
+Existem muitos mais Pythons diferentes no mundo. Encontrá-los-á se procurar, mas este curso irá concentrar-se no CPython.
+

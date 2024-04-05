@@ -1,0 +1,5 @@
+Revisão de vetores e programação 
+● Prática de Vetores explícitos e não explícitos
+● Criacao de sub rotinas
+● Leitura de strings com sub rotinas
+● Estrutura de Menu de Controle

@@ -1,0 +1,5 @@
+O PEP 8 — Style Guide for Python Code recomenda a seguinte convenção de nomenclatura para variáveis e funções em Python:
+
+os nomes de variáveis devem ser minúsculas, com palavras separadas por underscores para melhorar a legibilidade (por exemplo, var, my_variable)
+os nomes de funções seguem a mesma convenção que os nomes de variáveis (por exemplo, fun, my_function)
+também é possível utilizar um caso misto (por exemplo, myVariable), mas apenas em contextos onde esse já é o estilo predominante, para manter a retrocompatibilidade com a convenção adotada.

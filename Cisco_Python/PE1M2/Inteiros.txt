@@ -1,0 +1,31 @@
+Inteiros
+Pode já saber um pouco sobre como os computadores efetuam cálculos sobre números. Talvez já tenha ouvido falar do sistema binário, e saiba que é o sistema que os computadores utilizam para armazenar números, e que eles podem realizar qualquer operação sobre eles.
+
+Não vamos explorar aqui as complexidades dos sistemas de numeração posicional, mas vamos dizer que os números tratados pelos computadores modernos são de dois tipos:
+
+inteiros, isto é, aqueles que são desprovidos da parte fraccionada;
+e números floating-point (ou simplesmente float), que contêm (ou são capazes de conter) a parte fraccionada.
+Esta definição não é inteiramente exata, mas suficiente por agora. A distinção é muito importante, e a fronteira entre estes dois tipos de números é muito rigorosa. Ambos os tipos de números diferem significativamente na forma como são armazenados na memória de um computador e no intervalo de valores aceitáveis.
+
+A característica do valor numérico que determina o seu tipo, intervalo, e aplicação, é chamada type.
+
+Se codificar um literal e o colocar dentro do código Python, a forma do literal determina a representação (type) que o Python utilizará para o armazenar na memória.
+
+Por agora, vamos deixar de lado os números floating-point (voltaremos a eles em breve) e considerar a questão de como o Python reconhece os inteiros.
+
+
+O processo é quase como escrevê-los com um lápis no papel - é simplesmente uma string de dígitos que compõem o número. Mas há uma reserva - não deve interpor quaisquer carateres que não sejam dígitos dentro do número.
+
+Tomemos, por exemplo, o número onze milhões cento e onze mil cento e onze. Se pegasse agora mesmo num lápis, escreveria o número desta forma: 11,111,111, ou assim: 11.111.111, ou mesmo assim: 11 111 111.
+
+É evidente que esta disposição facilita a leitura, especialmente quando o número é composto por muitos dígitos. No entanto, o Python não aceita coisas como estas. É proibido. O que o Python permite, no entanto, é a utilização de underscores em literais numéricos.*
+
+Por conseguinte, pode escrever este número desta forma: 11111111, ou assim: 11_111_111.
+
+NOTA *Python 3.6 introduziu underscores em letras numéricas, permitindo a colocação de underscores únicos entre dígitos e após especificadores de base para melhorar a legibilidade. Este recurso não está disponível em versões mais antigas de Python.
+
+
+E como codificamos números negativos em Python? Como de costume - adicionando um menos. Pode escrever: -11111111, ou -11_111_111.
+
+Os números positivos não precisam de ser precedidos pelo sinal de mais, mas é permitido, se o desejar fazer. As linhas a seguir descrevem o mesmo número: +11111111 e 11111111.
+

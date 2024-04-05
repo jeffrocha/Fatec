@@ -1,0 +1,37 @@
+Valores Booleanos
+Para concluir com os literais de Python, existem mais dois.
+
+Não são tão óbvios como os anteriores, uma vez que são usados para representar um valor muito abstrato - truthfulness (veracidade).
+
+Cada vez que pergunta ao Python se um número é maior que outro, a pergunta resulta na criação de alguns dados específicos - um valor Booleano.
+
+O nome vem de George Boole (1815-1864), autor da obra fundamental, As Leis do Pensamento, que contém a definição de álgebra Booleana - uma parte da álgebra que faz uso de apenas dois valores distintos: True e False, denotado como 1 e 0.
+
+
+Um programador escreve um programa, e o programa faz perguntas. O Python executa o programa, e fornece as respostas. O programa deve ser capaz de reagir de acordo com as respostas recebidas.
+
+Felizmente, os computadores conhecem apenas dois tipos de respostas:
+
+Sim, isto é verdade;
+Não, isto é falso.
+Nunca obterá uma resposta como: Não sei ou Provavelmente sim, mas não sei ao certo.
+
+
+O Python, então, é um réptil binário.
+
+Estes dois valores Booleanos têm denotações rigorosas em Python:
+
+True
+False
+
+Não se pode mudar nada - é preciso tomar estes símbolos tal como eles são, incluindo case-sensitivity.
+
+
+Desafio: Qual será o output do seguinte snippet de código?
+
+print(True > False)
+print(True < False)
+
+
+Execute o código na Sandbox para verificar. Consegue explicar o resultado?
+

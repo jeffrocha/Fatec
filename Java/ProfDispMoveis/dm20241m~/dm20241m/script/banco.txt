@@ -1,0 +1,30 @@
+create database dm20241;
+
+create table dm20241.usuarios (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  login VARCHAR(255),
+  senha VARCHAR(255),
+  status VARCHAR(255),
+  tipo VARCHAR(255),
+  primary key (id));
+
+create table dm20241.sistemas (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255),
+  servidor VARCHAR(255),
+  versao VARCHAR(255),
+  status VARCHAR(255),
+  primary key (id));
+
+create table dm20241.usuariossistemas (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  idU BIGINT NOT NULL,
+  idS BIGINT NOT NULL,
+  obs VARCHAR(255),
+  primary key (id));
+
+ALTER TABLE dm20241.usuariossistemas ADD CONSTRAINT USUSIS FOREIGN KEY(idU) REFERENCES dm20241.usuarios(id);
+ALTER TABLE dm20241.usuariossistemas ADD CONSTRAINT SIUSU FOREIGN KEY(idS) REFERENCES dm20241.sistemas(id);
+
+INSERT INTO `dm20241`.`usuarios` (`login`, `senha`, `status`, `tipo`) VALUES ('BITTENCOURT', 'ABFABF010101', 'ATIVO', 'ADM');
+INSERT INTO `dm20241`.`usuarios` (`login`, `senha`, `status`, `tipo`) VALUES ('SCURACCHIO', 'ABFABF010101', 'ATIVO', 'VISITANTE');

@@ -1,0 +1,8 @@
+print(10+102)#SOMA
+print(10-2)#SUBTRAÇÃO
+print(10*2)#MULTIPLICAÇÃO
+print(10/2)#DIVISÃO
+print(12//3)#DIVISÃO INTEIRA 
+print(11%2)#MODULO MOSTRA A SOBRA DA DIVISÃO
+print(10%2)#VINDE ANTERIOR
+print(10**2)#POTÊNCIA
