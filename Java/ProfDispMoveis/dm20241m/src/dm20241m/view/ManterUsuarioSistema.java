@@ -72,8 +72,8 @@ public class ManterUsuarioSistema {
         ControllerUsuarioSistema contUsu = new ControllerUsuarioSistema();
         UsuarioSistema usuSaida = contUsu.buscar(usuEnt);
         JOptionPane.showMessageDialog(null,usuSaida.toString());
-        //JOptionPane.showMessageDialog(null,usuSaida.getUsu().toString());
-        //JOptionPane.showMessageDialog(null,usuSaida.getSis().toString());
+        JOptionPane.showMessageDialog(null,usuSaida.getUsu().toString());
+        JOptionPane.showMessageDialog(null,usuSaida.getSis().toString());
 
     }
 
@@ -92,8 +92,8 @@ public class ManterUsuarioSistema {
         List<UsuarioSistema> listaUsuario = contUsu.listar(usuEnt);
         for (UsuarioSistema usuSaida : listaUsuario) {
             JOptionPane.showMessageDialog(null,usuSaida.toString());
-            //JOptionPane.showMessageDialog(null,usuSaida.getUsu().toString());
-            //JOptionPane.showMessageDialog(null,usuSaida.getSis().toString());
+            JOptionPane.showMessageDialog(null,usuSaida.getUsu().toString());
+            JOptionPane.showMessageDialog(null,usuSaida.getSis().toString());
         }
     }
 

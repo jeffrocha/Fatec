@@ -5,7 +5,11 @@
 package dm20241m.controller;
 
 import dm20241m.model.bean.CadastroUsuario;
+import dm20241m.model.bean.Sistema;
+import dm20241m.model.bean.Usuario;
+import dm20241m.model.bean.UsuarioSistema;
 import dm20241m.model.dao.DaoCadastroUsuario;
+import dm20241m.model.dao.DaoUsuarioSistema;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +35,22 @@ public class ControllerCadastroUsuario {
         return cadastroUsuSaida;
     }
 
-    public CadastroUsuario buscar(CadastroUsuario cadastroUsuEnt) throws SQLException, ClassNotFoundException {
+    public CadastroUsuario buscar(CadastroUsuario cadastroUsuEnt) throws SQLException, ClassNotFoundException { 
+       
         daoCadastroUsu = new DaoCadastroUsuario();
         CadastroUsuario cadastroUsuSaida = daoCadastroUsu.buscar(cadastroUsuEnt);
+        
+        Usuario usu = new Usuario(cadastroUsuSaida.getIdU());
+        contUsu = new ControllerUsuario();
+        cadastroUsuSaida.setUsu(contUsu.buscar(usu));
+        
+        Sistema sis = new Sistema(cadastroUsuSaida.getIdC());
+        contSis = new ControllerSistema();
+        cadastroUsuSaida.setSis(contSis.buscar(sis));
+        
         return cadastroUsuSaida;
     }
-
+    
     public CadastroUsuario excluir(CadastroUsuario cadastroUsuEnt) throws SQLException, ClassNotFoundException {
         daoCadastroUsu = new DaoCadastroUsuario();
         CadastroUsuario cadastroUsuSaida = daoCadastroUsu.excluir(cadastroUsuEnt);

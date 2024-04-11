@@ -67,13 +67,32 @@ public class ManterCadastroUsuario {
         JOptionPane.showMessageDialog(null, cadastroUsuSaida.toString());
     }
 
-    private static void buscar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        CadastroUsuario cadastroUsuEnt = new CadastroUsuario(id);
-        ControllerCadastroUsuario contCadastroUsu = new ControllerCadastroUsuario();
-        CadastroUsuario cadastroUsuSaida = contCadastroUsu.buscar(cadastroUsuEnt);
+private static void buscar() throws SQLException, ClassNotFoundException {
+    int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
+    CadastroUsuario cadastroUsuEnt = new CadastroUsuario(id);
+    ControllerCadastroUsuario contCadastroUsu = new ControllerCadastroUsuario();
+    CadastroUsuario cadastroUsuSaida = contCadastroUsu.buscar(cadastroUsuEnt);
+    
+    if (cadastroUsuSaida != null) {
         JOptionPane.showMessageDialog(null, cadastroUsuSaida.toString());
+        JOptionPane.showMessageDialog(null, cadastroUsuSaida.getIdC().toString());
+        JOptionPane.showMessageDialog(null, cadastroUsuSaida.getIdU());
+    } else {
+        JOptionPane.showMessageDialog(null, "Usuário não encontrado");
     }
+}
+
+/*    private static void buscar() throws SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
+        UsuarioSistema usuEnt = new UsuarioSistema(id);
+        ControllerUsuarioSistema contUsu = new ControllerUsuarioSistema();
+        UsuarioSistema usuSaida = contUsu.buscar(usuEnt);
+        JOptionPane.showMessageDialog(null,usuSaida.toString());
+        JOptionPane.showMessageDialog(null,usuSaida.getUsu().toString());
+        JOptionPane.showMessageDialog(null,usuSaida.getSis().toString());
+
+    }*/
+
 
     private static void excluir() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
