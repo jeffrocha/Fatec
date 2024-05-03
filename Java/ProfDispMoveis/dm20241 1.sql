@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 26/04/2024 às 06:50
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 26-Abr-2024 às 15:31
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,27 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `permissoes`
+-- Estrutura da tabela `permissoes`
 --
 
 CREATE TABLE `permissoes` (
   `id` bigint(20) NOT NULL,
   `permissao` varchar(255) DEFAULT NULL,
   `descritivo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `permissoes`
+-- Extraindo dados da tabela `permissoes`
 --
 
 INSERT INTO `permissoes` (`id`, `permissao`, `descritivo`) VALUES
-(1, 'total', 'libera tudo'),
-(2, 'p1', 'p1');
+(1, 'total', 'Acesso Total');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `sistemas`
+-- Estrutura da tabela `sistemas`
 --
 
 CREATE TABLE `sistemas` (
@@ -53,19 +52,19 @@ CREATE TABLE `sistemas` (
   `servidor` varchar(255) DEFAULT NULL,
   `versao` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `sistemas`
+-- Extraindo dados da tabela `sistemas`
 --
 
 INSERT INTO `sistemas` (`id`, `nome`, `servidor`, `versao`, `status`) VALUES
-(1, 'a', 'a', 'a', 'a');
+(1, 'Analise e desenvolvimento de sistema', 'Fatec', '1.0', 'Ativo');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -74,38 +73,39 @@ CREATE TABLE `usuarios` (
   `senha` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `tipo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `login`, `senha`, `status`, `tipo`) VALUES
-(1, 'a', 'a', 'ativo', 'Admin');
+(1, 'admin', 'admin', 'ativo', 'Administrator');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuariospermissoes`
+-- Estrutura da tabela `usuariospermissoes`
 --
 
 CREATE TABLE `usuariospermissoes` (
   `id` bigint(20) NOT NULL,
   `idU` bigint(20) NOT NULL,
-  `idP` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `idP` bigint(20) NOT NULL,
+  `obs` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuariospermissoes`
+-- Extraindo dados da tabela `usuariospermissoes`
 --
 
-INSERT INTO `usuariospermissoes` (`id`, `idU`, `idP`) VALUES
-(1, 1, 1);
+INSERT INTO `usuariospermissoes` (`id`, `idU`, `idP`, `obs`) VALUES
+(1, 1, 1, 'usuario admin x permissão total');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuariossistemas`
+-- Estrutura da tabela `usuariossistemas`
 --
 
 CREATE TABLE `usuariossistemas` (
@@ -113,39 +113,39 @@ CREATE TABLE `usuariossistemas` (
   `idU` bigint(20) NOT NULL,
   `idS` bigint(20) NOT NULL,
   `obs` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuariossistemas`
+-- Extraindo dados da tabela `usuariossistemas`
 --
 
 INSERT INTO `usuariossistemas` (`id`, `idU`, `idS`, `obs`) VALUES
-(1, 1, 1, 'a x a');
+(1, 1, 1, 'usuario admin sistema Analise e desenvolvimento de sistema');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `permissoes`
+-- Índices para tabela `permissoes`
 --
 ALTER TABLE `permissoes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `sistemas`
+-- Índices para tabela `sistemas`
 --
 ALTER TABLE `sistemas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `usuariospermissoes`
+-- Índices para tabela `usuariospermissoes`
 --
 ALTER TABLE `usuariospermissoes`
   ADD PRIMARY KEY (`id`),
@@ -153,7 +153,7 @@ ALTER TABLE `usuariospermissoes`
   ADD KEY `idP` (`idP`);
 
 --
--- Índices de tabela `usuariossistemas`
+-- Índices para tabela `usuariossistemas`
 --
 ALTER TABLE `usuariossistemas`
   ADD PRIMARY KEY (`id`),
@@ -161,7 +161,7 @@ ALTER TABLE `usuariossistemas`
   ADD KEY `idS` (`idS`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -195,22 +195,22 @@ ALTER TABLE `usuariossistemas`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `usuariospermissoes`
+-- Limitadores para a tabela `usuariospermissoes`
 --
 ALTER TABLE `usuariospermissoes`
-  ADD CONSTRAINT `usuariospermissoes_ibfk_1` FOREIGN KEY (`idU`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `usuariospermissoes_ibfk_2` FOREIGN KEY (`idP`) REFERENCES `permissoes` (`id`);
+  ADD CONSTRAINT `fk_usuariospermissoes_permissoes` FOREIGN KEY (`idP`) REFERENCES `permissoes` (`id`),
+  ADD CONSTRAINT `fk_usuariospermissoes_usuarios` FOREIGN KEY (`idU`) REFERENCES `usuarios` (`id`);
 
 --
--- Restrições para tabelas `usuariossistemas`
+-- Limitadores para a tabela `usuariossistemas`
 --
 ALTER TABLE `usuariossistemas`
-  ADD CONSTRAINT `usuariossistemas_ibfk_1` FOREIGN KEY (`idU`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `usuariossistemas_ibfk_2` FOREIGN KEY (`idS`) REFERENCES `sistemas` (`id`);
+  ADD CONSTRAINT `fk_usuariossistemas_sistemas` FOREIGN KEY (`idS`) REFERENCES `sistemas` (`id`),
+  ADD CONSTRAINT `fk_usuariossistemas_usuarios` FOREIGN KEY (`idU`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
