@@ -11,12 +11,16 @@ package dm20241m.model.bean;
 public class Permissao {
     private int id;
     private String permissao;
+
+   
     private String descritivo;
 
     public Permissao(int id) {
         this.id = id;
     }
-
+ public Permissao(String permissao) {
+        this.permissao = permissao;
+    }
     public Permissao(String permissao, String descritivo) {
         this.permissao = permissao;
         this.descritivo = descritivo;

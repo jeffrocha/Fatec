@@ -2,46 +2,41 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="dm20241m.model.bean.Usuario"%>
-<%@page import="dm20241m.model.bean.Sistema"%>
-<%@page import="dm20241m.controller.ControllerSistema"%>
+<%@page import="dm20241m.model.bean.Permissao"%>
+<%@page import="dm20241m.controller.ControllerPermissao"%>
 
 <%
-    String nome = request.getParameter("NOME");
-    Sistema sis = new Sistema(nome);
-    ControllerSistema siscont = new ControllerSistema();
-    List<Sistema> listaSistema = siscont.listar(sis);
+    String permissao = request.getParameter("PERMISSAO");
+    Permissao per = new Permissao(permissao);
+    ControllerPermissao siscont = new ControllerPermissao();
+    List<Permissao> listaPermissao = siscont.listar(per);
     Usuario usuLogado = (Usuario) session.getAttribute("UsuarioLogado");
-    String url = "PBUSCA=" + sis.getNome()+"&ID=" ;
+    String url = "PBUSCA=" + per.getPermissao()+"&ID=" ;
 %>
 
 <html>
     <%@include file="../../inc/materalizeWeb.inc" %>
-    <title>LISTA SISTEMAS</title>
+    <title>LISTA PERMISSAO</title>
     <body>
         <table class="striped responsive-table">
             <thead>
               <tr>
                   <th data-field="Id">Id</th>
-                  <th data-field="Nome">Nome</th>
-                  <th data-field="Servidor">Servidor</th>
-                  <th data-field="Status">Status</th>
-                  <th data-field="Versao">Versao</th>
-                  <th data-field="Excluir">Excluir</th>
-                  <th data-field="Alterar">Alterar</th>
+                  <th data-field="Permissao">Permissao</th>
+                  <th data-field="Descritivo">Descritivo</th>
+
               </tr>
             </thead>
-            <% if (!(listaSistema.isEmpty())) { %>    
+            <% if (!(listaPermissao.isEmpty())) { %>    
                 <tbody>
-                    <% for (Sistema sisSaida : listaSistema) { %>
+                    <% for (Permissao sisSaida : listaPermissao) { %>
                     <tr>
                             <td><%=sisSaida.getId()%></td>
-                            <td><%=sisSaida.getNome()%></td>
-                            <td><%=sisSaida.getServidor()%></td>
-                            <td><%=sisSaida.getStatus()%></td>
-                            <td><%=sisSaida.getVersao()%></td>
+                            <td><%=sisSaida.getPermissao()%></td>
+                            <td><%=sisSaida.getDescritivo()%></td>
                             <% if (usuLogado.getTipo().equals("ADM")) { %>
-                                <td><a href="excluirSistema.jsp?<%=url + sisSaida.getId()%>">Excluir</a></td>
-                                <td><a href="alterarSistema.jsp?<%=url + sisSaida.getId()%>">Alterar</a></td>
+                                <td><a href="excluirPermissao.jsp?<%=url + sisSaida.getId()%>">Excluir</a></td>
+                                <td><a href="alterarPermissao.jsp?<%=url + sisSaida.getId()%>">Alterar</a></td>
                             <% } %>
                         </tr>
                     <% } %>

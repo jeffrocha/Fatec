@@ -1,19 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="dm20241m.model.bean.Sistema"%>
-<%@page import="dm20241m.controller.ControllerSistema"%>
+<%@page import="dm20241m.model.bean.Permissao"%>
+<%@page import="dm20241m.controller.ControllerPermissao"%>
 
 <%
     String cod = request.getParameter("ID");
     int id = Integer.parseInt(cod);
-    String nome = request.getParameter("NOME");
-    String servidor = request.getParameter("SERVIDOR");
-    String status = request.getParameter("STATUS");
-    String versao = request.getParameter("VERSAO");
-    Sistema sis = new Sistema(id,nome, servidor, status, versao);
-    ControllerSistema siscont = new ControllerSistema();
-    siscont.alterar(sis);
+    String permissao = request.getParameter("PERMISSAO");
+    String descritivo = request.getParameter("DESCRITIVO");
+    Permissao per = new Permissao(id, permissao, descritivo);
+    ControllerPermissao siscont = new ControllerPermissao();
+    siscont.alterar(per);
     String pbusca = request.getParameter("PBUSCA");
     // REDIRECIONA PARA A PAG LOGIN.JSP
-    String url = "validaConsultarSistema.jsp?NOME=" + pbusca;
+    String url = "validaConsultarPermissao.jsp?NOME=" + pbusca;
     response.sendRedirect(url);
 %>
