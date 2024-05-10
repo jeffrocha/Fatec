@@ -2,15 +2,15 @@
 <%@page import="java.util.List"%>
 <%@page import="dm20241m.model.bean.Usuario"%>
 <%@page import="dm20241m.controller.ControllerUsuario"%>
-<%@page import="dm20241m.model.bean.Sistema"%>
-<%@page import="dm20241m.controller.ControllerSistema"%>
-<%@page import="dm20241m.model.bean.UsuarioSistema"%>
-<%@page import="dm20241m.controller.ControllerUsuarioSistema"%>
+<%@page import="dm20241m.model.bean.Permissao"%>
+<%@page import="dm20241m.controller.ControllerPermissao"%>
+<%@page import="dm20241m.model.bean.UsuarioPermissao"%>
+<%@page import="dm20241m.controller.ControllerUsuarioPermissao"%>
 
 <%
-    ControllerSistema sisCont = new ControllerSistema();
-    Sistema pf = new Sistema("");
-    List<Sistema> listaSistema = sisCont.listar(pf);
+    ControllerPermissao sisCont = new ControllerPermissao();
+    Permissao pf = new Permissao("");
+    List<Permissao> listaPermissao = sisCont.listar(pf);
 
     ControllerUsuario usuCont = new ControllerUsuario();
     Usuario usuEnt = new Usuario("");
@@ -19,18 +19,18 @@
 
 <html>
     <%@include file="../../inc/materalizeWeb.inc" %>
-    <title>INSERIR USUARIO SISTEMA</title>
+    <title>INSERIR USUARIO Permissao</title>
     <body>
         <div class="container"/>
-            <h1>Inseri Usuario Sistema</h1>
-            <form name="inseriUsuarioSistema" action="validaRelacaoUsuarioSistema.jsp" method="POST">
+            <h1>Inseri Usuario Permissao</h1>
+            <form name="inseriUsuarioPermissao" action="validaRelacaoUsuarioPermissao.jsp" method="POST">
                 <table>
                     <tr>
-                        <td>Sistema:</td>
+                        <td>Permissao:</td>
                         <td>
-                            <select NAME ="ID_SISTEMA" class="browser-default">
-                               <% for (Sistema sisSaida : listaSistema) { %>
-                                    <option value="<%=sisSaida.getId()%>"><%=sisSaida.getNome()%></option>
+                            <select NAME ="ID_Permissao" class="browser-default">
+                               <% for (Permissao sisSaida : listaPermissao) { %>
+                                    <option value="<%=sisSaida.getId()%>"><%=sisSaida.getPermissao()%></option>
                                 <% } %>
                             </select> 
                         </td>

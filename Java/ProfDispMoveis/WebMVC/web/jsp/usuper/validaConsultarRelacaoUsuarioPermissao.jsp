@@ -2,16 +2,16 @@
 <%@page import="java.util.List"%>
 <%@page import="dm20241m.model.bean.Usuario"%>
 <%@page import="dm20241m.controller.ControllerUsuario"%>
-<%@page import="dm20241m.model.bean.Sistema"%>
-<%@page import="dm20241m.controller.ControllerSistema"%>
-<%@page import="dm20241m.model.bean.UsuarioSistema"%>
-<%@page import="dm20241m.controller.ControllerUsuarioSistema"%>
+<%@page import="dm20241m.model.bean.Permissao"%>
+<%@page import="dm20241m.controller.ControllerPermissao"%>
+<%@page import="dm20241m.model.bean.UsuarioPermissao"%>
+<%@page import="dm20241m.controller.ControllerUsuarioPermissao"%>
 
 <%
     String obs = request.getParameter("OBS");
-    UsuarioSistema ususis = new UsuarioSistema(obs);
-    ControllerUsuarioSistema usupescont = new ControllerUsuarioSistema();
-    List<UsuarioSistema> listaususist = usupescont.listar(ususis);
+    UsuarioPermissao ususis = new UsuarioPermissao(obs);
+    ControllerUsuarioPermissao usupescont = new ControllerUsuarioPermissao();
+    List<UsuarioPermissao> listaususist = usupescont.listar(ususis);
     Usuario usuLogado = (Usuario) session.getAttribute("UsuarioLogado");
     String url = "PBUSCA=" + ususis.getObs()+"&ID=" ;
 %>
@@ -26,8 +26,8 @@
                   <th data-field="IdUsuSist">Id</th>
                   <th data-field="IdU">IdUsuario</th>
                   <th data-field="Login">Login</th>
-                  <th data-field="IdS">IdSistema</th>
-                  <th data-field="NomeSistema">Sistema</th>
+                  <th data-field="IdS">IdPermissao</th>
+                  <th data-field="NomePermissao">Permissao</th>
                   <th data-field="Observacao">Observacao</th>
                   <th data-field="Excluir">Excluir</th>
                   <th data-field="Alterar">Alterar</th>
@@ -35,18 +35,18 @@
             </thead>
             <% if (!(listaususist.isEmpty())) { %>    
                 <tbody>
-                    <% for (UsuarioSistema usuSistSaida : listaususist) { 
+                    <% for (UsuarioPermissao usuSistSaida : listaususist) { 
                         %>
                         <tr>
                             <td><%=usuSistSaida.getId()%></td>
                             <td><%=usuSistSaida.getIdU()%></td>
                             <td><%=usuSistSaida.getUsu().getLogin()%></td>
-                            <td><%=usuSistSaida.getIdS()%></td>
-                            <td><%=usuSistSaida.getSis().getNome()%></td>
+                            <td><%=usuSistSaida.getIdP()%></td>
+                            <td><%=usuSistSaida.getPer().getPermissao()%></td>
                             <td><%=usuSistSaida.getObs()%></td>
                             <% if (usuLogado.getTipo().equals("ADM")) { %>
-                                <td><a href="excluirRelacaoUsuarioSistema.jsp?<%=url + usuSistSaida.getId()%>">Excluir</a></td>
-                                <td><a href="alterarRelacaoUsuarioSistema.jsp?<%=url + usuSistSaida.getId()%>">Alterar</a></td>
+                                <td><a href="excluirRelacaoUsuarioPermissao.jsp?<%=url + usuSistSaida.getId()%>">Excluir</a></td>
+                                <td><a href="alterarRelacaoUsuarioPermissao.jsp?<%=url + usuSistSaida.getId()%>">Alterar</a></td>
                             <% } %>
                         </tr>
                     <% } %>

@@ -1,23 +1,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 %@page import="dm20241m.model.bean.Usuario"%>
 <%@page import="dm20241m.controller.ControllerUsuario"%>
-<%@page import="dm20241m.model.bean.Sistema"%>
-<%@page import="dm20241m.controller.ControllerSistema"%>
-<%@page import="dm20241m.model.bean.UsuarioSistema"%>
-<%@page import="dm20241m.controller.ControllerUsuarioSistema"%>
+<%@page import="dm20241m.model.bean.Permissao"%>
+<%@page import="dm20241m.controller.ControllerPermissao"%>
+<%@page import="dm20241m.model.bean.UsuarioPermissao"%>
+<%@page import="dm20241m.controller.ControllerUsuarioPermissao"%>
 
 
 <%
     String cod = request.getParameter("ID");
     int id = Integer.parseInt(cod);
     int idU = Integer.parseInt(request.getParameter("ID_USUARIO"));
-    int idS = Integer.parseInt(request.getParameter("ID_SISTEMA"));
+    int idP = Integer.parseInt(request.getParameter("ID_Permissao"));
     String obs = request.getParameter("OBS");
     String pbusca = request.getParameter("PBUSCA");
-    UsuarioSistema ussis = new UsuarioSistema(id,idU, idS, obs);
-    ControllerUsuarioSistema ususiscont = new ControllerUsuarioSistema();
+    UsuarioPermissao ussis = new UsuarioPermissao(id,idU, idP, obs);
+    ControllerUsuarioPermissao ususiscont = new ControllerUsuarioPermissao();
     ususiscont.alterar(ussis);
-    String url = "validaConsultarRelacaoUsuarioSistema.jsp?OBS=" + pbusca;
+    String url = "validaConsultarRelacaoUsuarioPermissao.jsp?OBS=" + pbusca;
     response.sendRedirect(url);
 %>    
     

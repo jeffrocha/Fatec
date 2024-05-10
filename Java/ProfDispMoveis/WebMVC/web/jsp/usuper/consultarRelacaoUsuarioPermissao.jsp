@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
     <%@include file="../../inc/materalizeWeb.inc" %>
-    <title>CONSULTAR - USUÁRIO - SISTEMA</title>
+    <title>CONSULTAR - USUÁRIO - Permissao</title>
     <body>
        <div class="container"/>
-       <h1>CONSULTAR USUÁRIO - SISTEMA</h1>
-       <form name="consultarUsuarioSistema" action="validaConsultarRelacaoUsuarioSistema.jsp" method="post">
+       <h1>CONSULTAR USUÁRIO - Permissao</h1>
+       <form name="consultarUsuarioPermissao" action="validaConsultarRelacaoUsuarioPermissao.jsp" method="post">
            Observação: <input type="text" name ="OBS" value=""> <br>
            <input type="submit" name ="Enviar" value="Enviar"> <br>
        </form>
