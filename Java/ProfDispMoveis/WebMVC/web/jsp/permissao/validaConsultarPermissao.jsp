@@ -44,4 +44,5 @@
             <% } %>
         </table>    
     </body>
+    <a href="../contacess/menu.jsp"> <input type="BUTTON" name="Voltar" value="Voltar"> </a>
 </html>

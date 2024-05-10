@@ -75,6 +75,7 @@
             <input type="HIDDEN" name="PBUSCA" value="<%=pbusca%>">
             <input type="submit" name="Enviar" value="OK">
         </form>
+        <a href="../contacess/menu.jsp"> <input type="BUTTON" name="Voltar" value="Voltar"> </a>
         <div>
     </body>
 </html>

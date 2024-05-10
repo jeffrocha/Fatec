@@ -10,6 +10,7 @@
            LOGIN <input type="text" name ="LOGIN" value=""> <br>
            <input type="submit" name ="Enviar" value="Enviar"> <br>
        </form>
+       <a href="../contacess/menu.jsp"> <input type="BUTTON" name="Voltar" value="Voltar"> </a>
        </div>
     </body>
 </html>

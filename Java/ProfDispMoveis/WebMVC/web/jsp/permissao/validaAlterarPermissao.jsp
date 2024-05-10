@@ -13,5 +13,5 @@
     String pbusca = request.getParameter("PBUSCA");
     // REDIRECIONA PARA A PAG LOGIN.JSP
     String url = "validaConsultarPermissao.jsp?NOME=" + pbusca;
-    response.sendRedirect(url);
+    response.sendRedirect(url);    
 %>

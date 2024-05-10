@@ -12,6 +12,7 @@
             Tipo: <input type="text" name="TIPO" value=""> <br>
             <input type="submit" name="Enviar" value="OK">
         </form>
+        <a href="../contacess/menu.jsp"> <input type="BUTTON" name="Voltar" value="Voltar"> </a>
         </div>
     </body>
 </html>

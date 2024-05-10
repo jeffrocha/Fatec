@@ -10,7 +10,8 @@
             Descritivo: <input type="text" name="DESCRITIVO" value=""> <br>
             <input type="submit" name="Enviar" value="OK">
         </form>
-        </div>
+        <a href="../contacess/menu.jsp"> <input type="BUTTON" name="Voltar" value="Voltar"> </a>
+    </div>
     </body>
 </html>
 

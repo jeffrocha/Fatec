@@ -8,6 +8,7 @@
             <form name="FORMLOGIN" action="menu.jsp" method="post">
                 LOGIN: <input type="text" name ="LOGIN"> <br>
                 SENHA: <input type="password" name ="SENHA"> <br>
+                <input type="HIDDEN" name ="MENU" value="S"> <br>
                 <input type="submit" name="ENVIAR" value="ENVIAR">
             </form>
         </div>

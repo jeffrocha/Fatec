@@ -3,12 +3,19 @@
 <%@page import="dm20241m.controller.ControllerUsuario"%>
 
 <%
-    String login = request.getParameter("LOGIN");
-    String senha = request.getParameter("SENHA");
-    Usuario usuEntrada = new Usuario(login,senha);
-    ControllerUsuario usucont = new ControllerUsuario();
-    Usuario usuSaida = usucont.validarWeb(usuEntrada);
-    session.setAttribute("UsuarioLogado",usuSaida);
+         Usuario usuLogado = (Usuario) session.getAttribute("UsuarioLogado");
+         Usuario usuSaida ;
+        if(usuLogado == null) {
+            String login = request.getParameter("LOGIN");
+            String senha = request.getParameter("SENHA");
+            Usuario usuEntrada = new Usuario(login,senha);
+            ControllerUsuario usucont = new ControllerUsuario();
+            usuSaida = usucont.validarWeb(usuEntrada);
+            session.setAttribute("UsuarioLogado",usuSaida);
+        } else {
+            usuSaida = usuLogado;
+    
+        }
 %>
 
 
