@@ -10,7 +10,7 @@ import LP_10.view.jFrTela;
  *
  * @author J&L
  */
-public class LP_10 {
+public class Principal {
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
