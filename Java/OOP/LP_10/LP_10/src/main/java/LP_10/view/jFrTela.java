@@ -65,7 +65,7 @@ public class jFrTela extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btAC = new javax.swing.JButton();
         btMaisMenos = new javax.swing.JButton();
-        btPercentual = new javax.swing.JButton();
+        btApagar = new javax.swing.JButton();
         btDividir = new javax.swing.JButton();
         bt7 = new javax.swing.JButton();
         bt8 = new javax.swing.JButton();
@@ -109,8 +109,14 @@ public class jFrTela extends javax.swing.JFrame {
         });
         jPanel1.add(btMaisMenos);
 
-        btPercentual.setText("%");
-        jPanel1.add(btPercentual);
+        btApagar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        btApagar.setText("←");
+        btApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btApagarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btApagar);
 
         btDividir.setText("/");
         btDividir.addActionListener(new java.awt.event.ActionListener() {
@@ -358,13 +364,20 @@ public class jFrTela extends javax.swing.JFrame {
     private void btMaisMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaisMenosActionPerformed
     String valorAtual = tfValor.getText();
     if (!valorAtual.equals("0,00")) {
-        if (valorAtual.startsWith("-")) {  // Verifica se o valor atual é negativo
-            tfValor.setText(valorAtual.substring(1)); // Se for negativo, remove o sinal negativo
+        if (valorAtual.startsWith("-")) { 
+            tfValor.setText(valorAtual.substring(1)); 
         } else {
-            tfValor.setText("-" + valorAtual); // Se for positivo, adiciona o sinal negativo
+            tfValor.setText("-" + valorAtual); 
         }
     }
     }//GEN-LAST:event_btMaisMenosActionPerformed
+
+    private void btApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btApagarActionPerformed
+    String valorAtual = tfValor.getText();
+    if (!valorAtual.isEmpty()) {
+        tfValor.setText(valorAtual.substring(0, valorAtual.length() - 1));
+    }
+    }//GEN-LAST:event_btApagarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -379,6 +392,7 @@ public class jFrTela extends javax.swing.JFrame {
     private javax.swing.JButton bt8;
     private javax.swing.JButton bt9;
     private javax.swing.JButton btAC;
+    private javax.swing.JButton btApagar;
     private javax.swing.JButton btDividir;
     private javax.swing.JButton btFechar;
     private javax.swing.JButton btIgual;
@@ -386,7 +400,6 @@ public class jFrTela extends javax.swing.JFrame {
     private javax.swing.JButton btMaisMenos;
     private javax.swing.JButton btMenos;
     private javax.swing.JButton btMultiplicar;
-    private javax.swing.JButton btPercentual;
     private javax.swing.JButton btVirgula;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tfValor;
