@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package LP_10.control;
+package ex01;
 
-import LP_10.Enum.EnumOperacao;
+import ex01.EnumOperacao;
 
 /**
  *

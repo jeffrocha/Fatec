@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package LP_10.view;
+package ex01;
 
-import LP_10.Enum.EnumOperacao;
-import LP_10.control.CalculadoraController;
+import ex01.EnumOperacao;
+import ex01.CalculadoraController;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
