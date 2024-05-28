@@ -4,10 +4,12 @@
  */
 package ex02;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -18,6 +20,14 @@ public class jFrTela extends javax.swing.JFrame {
 
     private final ButtonGroup entradaGroup;
     private final ButtonGroup saidaGroup;
+    
+    private final double varRealDolar = 0.19;
+    private final double varRealEuro = 0.18;
+    private final double varDolarReal = 5.16;
+    private final double varDolarEuro = 0.92;
+    private final double varEuroReal = 5.60;
+    private final double varEuroDolar = 1.09;
+    
     /**
      * Creates new form jFrTela
      */
@@ -54,6 +64,7 @@ public class jFrTela extends javax.swing.JFrame {
         radBRealSaida = new javax.swing.JRadioButton();
         radBDolarSaida = new javax.swing.JRadioButton();
         radBEuroSaida = new javax.swing.JRadioButton();
+        btCalcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Concersor de Moeda");
@@ -79,13 +90,14 @@ public class jFrTela extends javax.swing.JFrame {
         textf_Saida.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         textf_Saida.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         textf_Saida.setText("0,00");
+        textf_Saida.setEnabled(false);
         textf_Saida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textf_SaidaActionPerformed(evt);
             }
         });
 
-        btLimpar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btLimpar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         btLimpar.setText("Limpar");
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +147,14 @@ public class jFrTela extends javax.swing.JFrame {
             }
         });
 
+        btCalcular.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btCalcular.setText("Calcular");
+        btCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCalcularActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,20 +168,22 @@ public class jFrTela extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radBRealEntrada)
-                                .addGap(108, 108, 108)
+                                .addGap(140, 140, 140)
                                 .addComponent(radBDolarEntrada)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                                 .addComponent(radBEuroEntrada))
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radBRealSaida)
-                                .addGap(108, 108, 108)
+                                .addGap(140, 140, 140)
                                 .addComponent(radBDolarSaida)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(radBEuroSaida))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
                         .addComponent(btLimpar)))
                 .addContainerGap())
         );
@@ -175,11 +197,11 @@ public class jFrTela extends javax.swing.JFrame {
                     .addComponent(radBRealEntrada)
                     .addComponent(radBEuroEntrada)
                     .addComponent(radBDolarEntrada))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addComponent(textf_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radBRealSaida)
                     .addComponent(radBDolarSaida)
@@ -187,7 +209,9 @@ public class jFrTela extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(textf_Saida, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(btLimpar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
         );
 
@@ -198,31 +222,37 @@ public class jFrTela extends javax.swing.JFrame {
     private void radBEuroSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBEuroSaidaActionPerformed
         radBRealSaida.setSelected(false);
         radBDolarSaida.setSelected(false);
+          
     }//GEN-LAST:event_radBEuroSaidaActionPerformed
 
     private void radBRealEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBRealEntradaActionPerformed
         radBDolarEntrada.setSelected(false);
         radBEuroEntrada.setSelected(false);
+
     }//GEN-LAST:event_radBRealEntradaActionPerformed
 
     private void radBDolarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBDolarEntradaActionPerformed
         radBRealEntrada.setSelected(false);
         radBEuroEntrada.setSelected(false);
+        
     }//GEN-LAST:event_radBDolarEntradaActionPerformed
 
     private void radBEuroEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBEuroEntradaActionPerformed
         radBRealEntrada.setSelected(false);
         radBDolarEntrada.setSelected(false);
+
     }//GEN-LAST:event_radBEuroEntradaActionPerformed
 
     private void radBRealSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBRealSaidaActionPerformed
         radBEuroSaida.setSelected(false);
         radBDolarSaida.setSelected(false);
+
     }//GEN-LAST:event_radBRealSaidaActionPerformed
 
     private void radBDolarSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBDolarSaidaActionPerformed
         radBRealSaida.setSelected(false);
         radBEuroSaida.setSelected(false);
+
     }//GEN-LAST:event_radBDolarSaidaActionPerformed
 
     private void textf_EntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textf_EntradaActionPerformed
@@ -259,12 +289,100 @@ public class jFrTela extends javax.swing.JFrame {
     textf_Saida.setText("0,00");
     }//GEN-LAST:event_btLimparActionPerformed
 
+    private void btCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalcularActionPerformed
+        if (!radBRealEntrada.isSelected() && !radBDolarEntrada.isSelected() && !radBEuroEntrada.isSelected()) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecione a moeda de entrada.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+    
+        if (!radBRealSaida.isSelected() && !radBDolarSaida.isSelected() && !radBEuroSaida.isSelected()) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecione a moeda de saída.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        String entradaText = textf_Entrada.getText();
+        NumberFormat format = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
+        double valorEntrada = 0;
+
+        try {
+            valorEntrada = format.parse(entradaText).doubleValue();
+        } catch (ParseException ex) {
+            System.err.println("Erro ao fazer o parsing do texto de entrada: " + ex.getMessage());
+            return;
+        }
+
+        // Determina as moedas de entrada e saída
+        double taxaConversao = 1.0;
+
+        if (radBRealEntrada.isSelected() && radBDolarSaida.isSelected()) {
+            taxaConversao = varRealDolar;
+        } else if (radBRealEntrada.isSelected() && radBEuroSaida.isSelected()) {
+            taxaConversao = varRealEuro;
+        } else if (radBDolarEntrada.isSelected() && radBRealSaida.isSelected()) {
+            taxaConversao = varDolarReal;
+        } else if (radBDolarEntrada.isSelected() && radBEuroSaida.isSelected()) {
+            taxaConversao = varDolarEuro;
+        } else if (radBEuroEntrada.isSelected() && radBRealSaida.isSelected()) {
+            taxaConversao = varEuroReal;
+        } else if (radBEuroEntrada.isSelected() && radBDolarSaida.isSelected()) {
+            taxaConversao = varEuroDolar;
+        } else if (radBRealEntrada.isSelected() && radBRealSaida.isSelected()) {
+            taxaConversao = 1.0;
+        } else if (radBDolarEntrada.isSelected() && radBDolarSaida.isSelected()) {
+            taxaConversao = 1.0;
+        } else if (radBEuroEntrada.isSelected() && radBEuroSaida.isSelected()) {
+            taxaConversao = 1.0;
+        }
+
+        // Realiza a conversão
+        double valorSaida = valorEntrada * taxaConversao;
+
+        // Formata e exibe o resultado com duas casas decimais
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        textf_Saida.setText(df.format(valorSaida));
+    }                                            
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(jFrTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(jFrTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(jFrTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(jFrTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new jFrTela().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_btCalcularActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCalcular;
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
