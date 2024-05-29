@@ -28,9 +28,7 @@ public class jFrTela extends javax.swing.JFrame {
     private final double varEuroReal = 5.60;
     private final double varEuroDolar = 1.09;
     
-    /**
-     * Creates new form jFrTela
-     */
+
     public jFrTela() {
         initComponents();
         entradaGroup = new ButtonGroup();
@@ -256,24 +254,22 @@ public class jFrTela extends javax.swing.JFrame {
     }//GEN-LAST:event_radBDolarSaidaActionPerformed
 
     private void textf_EntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textf_EntradaActionPerformed
-              // Obtém o texto do campo textf_Entrada
+
         String entradaText = textf_Entrada.getText();
 
-        // Cria um objeto NumberFormat para o formato padrão do Brasil
+
         NumberFormat format = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
 
         try {
-            // Faz o parsing do texto para um número
+
             Number entradaNumber = format.parse(entradaText);
 
-            // Converte o número para um inteiro
             int entradaInt = entradaNumber.intValue();
 
-            // Exibe o número inteiro (apenas para fins de depuração)
             System.out.println("Entrada Inteira: " + entradaInt);
             textf_Saida.setText(String.valueOf(entradaInt));
         } catch (ParseException ex) {
-            // Se ocorrer um erro de parsing, imprime o erro
+
             System.err.println("Erro ao fazer o parsing do texto de entrada: " + ex.getMessage());
         }
     }//GEN-LAST:event_textf_EntradaActionPerformed
@@ -310,7 +306,6 @@ public class jFrTela extends javax.swing.JFrame {
             return;
         }
 
-        // Determina as moedas de entrada e saída
         double taxaConversao = 1.0;
 
         if (radBRealEntrada.isSelected() && radBDolarSaida.isSelected()) {
@@ -332,11 +327,7 @@ public class jFrTela extends javax.swing.JFrame {
         } else if (radBEuroEntrada.isSelected() && radBEuroSaida.isSelected()) {
             taxaConversao = 1.0;
         }
-
-        // Realiza a conversão
         double valorSaida = valorEntrada * taxaConversao;
-
-        // Formata e exibe o resultado com duas casas decimais
         DecimalFormat df = new DecimalFormat("#,##0.00");
         textf_Saida.setText(df.format(valorSaida));
     }                                            
