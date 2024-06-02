@@ -93,31 +93,32 @@ public class AlunoDAO {
        }
     }
     
-    public List<Aluno> getAlunos()
-    {
-        String sql="SELECT alunos.id as id, nomealuno, cursoid, nomecurso FROM "
-                + "alunos INNER JOIN cursos ON alunos.cursoid = cursos.id";
-        
-        try {
-            PreparedStatement stmt = this.conn.prepareStatement(sql);
-            ResultSet rs =stmt.executeQuery();
-            List<Aluno> lista = new ArrayList<>();
-            while(rs.next()){
-                Aluno aluno = new Aluno();
-                Curso curso = new Curso();
-                
-                aluno.setId(rs.getInt("id"));
-                aluno.setNomealuno(rs.getString("nomealuno"));
-                curso.setId(rs.getInt("cursoid"));
-                curso.setNomecurso(rs.getString("nomecurso"));
-                aluno.setCursoid(curso);
-                
-                lista.add(aluno);
-            }
-            return lista;
-        } catch (Exception e) {
-            return null;
-        }
+public List<Aluno> getAlunos(String filtro) {
+    String sql = "SELECT alunos.id as id, nomealuno, cursoid, nomecurso FROM "
+            + "alunos INNER JOIN cursos ON alunos.cursoid = cursos.id "
+            + "WHERE LOWER(alunos.nomealuno) LIKE ?";
+    
+    try {
+        PreparedStatement stmt = this.conn.prepareStatement(sql);
+        stmt.setString(1, "%" + filtro.toLowerCase() + "%");
+        ResultSet rs = stmt.executeQuery();
+        List<Aluno> lista = new ArrayList<>();
+        while (rs.next()) {
+            Aluno aluno = new Aluno();
+            Curso curso = new Curso();
 
+            aluno.setId(rs.getInt("id"));
+            aluno.setNomealuno(rs.getString("nomealuno"));
+            curso.setId(rs.getInt("cursoid"));
+            curso.setNomecurso(rs.getString("nomecurso"));
+            aluno.setCursoid(curso);
+
+            lista.add(aluno);
+        }
+        return lista;
+    } catch (Exception e) {
+        return null;
     }
+}
+
 }

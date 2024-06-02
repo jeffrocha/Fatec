@@ -51,7 +51,6 @@ public class FormCurso extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
-        btnRelatorio = new javax.swing.JButton();
 
         jLabel6.setText("jLabel6");
 
@@ -59,7 +58,8 @@ public class FormCurso extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Formulário de Cursos");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("FORMULÁRIO DE CURSOS");
@@ -84,6 +84,11 @@ public class FormCurso extends javax.swing.JFrame {
         });
 
         cmbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Técnico", "Tecnologo", "Graduação", "Pós" }));
+        cmbNivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNivelActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Pesquisar Curso pelo ID");
 
@@ -124,13 +129,6 @@ public class FormCurso extends javax.swing.JFrame {
             }
         });
 
-        btnRelatorio.setText("Relatório");
-        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorioActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,27 +149,26 @@ public class FormCurso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel7))
-                            .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jsDuracao)
                             .addComponent(txtId)
                             .addComponent(txtNomeCurso)
-                            .addComponent(cmbNivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(cmbNivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -207,12 +204,12 @@ public class FormCurso extends javax.swing.JFrame {
                     .addComponent(btnSalvar)
                     .addComponent(btnEditar)
                     .addComponent(btnExcluir)
-                    .addComponent(btnNovo)
-                    .addComponent(btnRelatorio))
+                    .addComponent(btnNovo))
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -232,7 +229,7 @@ public class FormCurso extends javax.swing.JFrame {
         
         //limpar os campos
         txtNomeCurso.setText("");
-        cmbNivel.setSelectedItem("Técnico");
+        cmbNivel.setSelectedItem("");
         jsDuracao.setValue(0);
         
         
@@ -282,7 +279,7 @@ public class FormCurso extends javax.swing.JFrame {
         //"limpar" os campos
         txtId.setText("");
         txtNomeCurso.setText("");
-        cmbNivel.setSelectedItem("Técnico");
+        cmbNivel.setSelectedItem("");
         jsDuracao.setValue(0);
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -295,7 +292,7 @@ public class FormCurso extends javax.swing.JFrame {
         //"limpar" os campos
         txtId.setText("");
         txtNomeCurso.setText("");
-        cmbNivel.setSelectedItem("Técnico");
+        cmbNivel.setSelectedItem("");
         jsDuracao.setValue(0);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -303,15 +300,13 @@ public class FormCurso extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtId.setText("");
         txtNomeCurso.setText("");
-        cmbNivel.setSelectedItem("Técnico");
+        cmbNivel.setSelectedItem("");
         jsDuracao.setValue(0);
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+    private void cmbNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelActionPerformed
         // TODO add your handling code here:
-        FormRelatorioCursos frc=new FormRelatorioCursos();
-        frc.setVisible(true);
-    }//GEN-LAST:event_btnRelatorioActionPerformed
+    }//GEN-LAST:event_cmbNivelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,7 +348,6 @@ public class FormCurso extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbNivel;
     private javax.swing.JLabel jLabel1;

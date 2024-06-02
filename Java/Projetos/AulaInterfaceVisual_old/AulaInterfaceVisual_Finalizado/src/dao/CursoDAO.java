@@ -91,7 +91,29 @@ public class CursoDAO {
            return null;
     }
     }
-    public List<Curso> getCursos(String nomecurso)//o import tem que ser import java.util.List;
+    
+    public List<Curso> getCursos(String nomecurso) {
+    String sql = "SELECT * FROM cursos WHERE nomecurso LIKE ? ORDER BY nomecurso"; // Adicionando ORDER BY nomecurso para ordenar por nome
+    try {
+        PreparedStatement stmt = this.conn.prepareStatement(sql);
+        stmt.setString(1, "%" + nomecurso + "%");
+        ResultSet rs = stmt.executeQuery();
+        List<Curso> listaCursos = new ArrayList<>();
+        while (rs.next()) {
+            Curso curso = new Curso();
+            curso.setId(rs.getInt("id"));
+            curso.setNomecurso(rs.getString("nomecurso"));
+            curso.setNivel(rs.getString("nivel"));
+            curso.setDuracao(rs.getInt("duracao"));
+            listaCursos.add(curso);
+        }
+        return listaCursos;
+    } catch (Exception e) {
+        return null;
+    }
+}
+    
+    /*public List<Curso> getCursos(String nomecurso)//o import tem que ser import java.util.List;
     {
         //SELECT * FROM cursos WHERE nomecurso LIKE '%A%'
         String sql= "SELECT * FROM cursos WHERE nomecurso LIKE ?"; //querry, executa esse código dentro do banco de dados -  parametro LIKE permite pesquisar partes do nome
@@ -115,5 +137,5 @@ public class CursoDAO {
             return null;
         }
                 
-    }
+    }*/
 }

@@ -9,6 +9,7 @@ import beans.Curso;
 import dao.AlunoDAO;
 import dao.CursoDAO;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -21,9 +22,11 @@ public class FormAluno extends javax.swing.JFrame {
         CursoDAO cursoDAO=new CursoDAO();
         List<Curso> lista = cursoDAO.getCursos("");
         
+       cmbCurso.removeAllItems(); //limpa os itens na memoria antes de fazer outra busca
+       if (!lista.isEmpty()){//verrifica se a lista não está vazia antes de listar o cmbCurso 
         for (Curso c: lista){
             cmbCurso.addItem(c);
-        }
+        }}
     }
     /**
      * Creates new form FormAluno
@@ -53,8 +56,11 @@ public class FormAluno extends javax.swing.JFrame {
         btnPesquisar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        btnNovo = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Formulário de Alunos");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -94,9 +100,33 @@ public class FormAluno extends javax.swing.JFrame {
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Segoe UI", 0, 23)); // NOI18N
+        txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
+            }
+        });
+
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setText("Editar");
+        btnEditar.setToolTipText("");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.setToolTipText("");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -127,8 +157,13 @@ public class FormAluno extends javax.swing.JFrame {
                             .addComponent(txtNomeAluno, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbCurso, javax.swing.GroupLayout.Alignment.LEADING, 0, 442, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btnSalvar)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
@@ -154,7 +189,11 @@ public class FormAluno extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnNovo)
+                    .addComponent(btnEditar)
+                    .addComponent(btnExcluir))
                 .addContainerGap())
         );
 
@@ -163,19 +202,27 @@ public class FormAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-        String nomeAluno=txtNomeAluno.getText();
-        Curso cursoid= (Curso) cmbCurso.getSelectedItem();
-        
-        Aluno aluno = new Aluno();
-        aluno.setNomealuno(nomeAluno);
-        aluno.setCursoid(cursoid);
-        
-        AlunoDAO alunoDAO = new AlunoDAO();
-        alunoDAO.inserir(aluno);
-        
-        //Limpar os campos
-        txtNomeAluno.setText("");
+     // TODO add your handling code here:
+    String nomeAluno = txtNomeAluno.getText();
+    Curso cursoid = (Curso) cmbCurso.getSelectedItem();
+    
+    if (cursoid == null) {
+        // Tratar o caso em que nenhum curso está selecionado
+        // Aqui você pode exibir uma mensagem de erro ou fazer qualquer outra ação necessária
+        System.out.println("Nenhum curso selecionado!");
+        return; // Sair do método para evitar o NullPointerException
+    }
+    
+    Aluno aluno = new Aluno();
+    aluno.setNomealuno(nomeAluno);
+    aluno.setCursoid(cursoid);
+    
+    AlunoDAO alunoDAO = new AlunoDAO();
+    alunoDAO.inserir(aluno);
+    
+    //Limpar os campos
+    txtNomeAluno.setText("");
+    cmbCurso.setSelectedIndex(-1);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -194,6 +241,20 @@ public class FormAluno extends javax.swing.JFrame {
     txtNomeAluno.setText(a.getNomealuno());
     cmbCurso.setSelectedItem(a.getCursoid());
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+    txtId.setText("");
+    txtPesquisar.setText("");
+    txtNomeAluno.setText("");    
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,6 +292,9 @@ public class FormAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox cmbCurso;

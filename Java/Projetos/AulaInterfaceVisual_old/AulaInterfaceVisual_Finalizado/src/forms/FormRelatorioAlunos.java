@@ -5,9 +5,7 @@
 package forms;
 
 import beans.Aluno;
-import beans.Curso;
 import dao.AlunoDAO;
-import dao.CursoDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,37 +15,30 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormRelatorioAlunos extends javax.swing.JFrame {
     
-      private void preencheTabela()
-   {
-       //criar uma variavel "AlunoDAO" para estabelecer comunicação 
-       //pegar os dados dos Alunos da lista e jogar dentro da tabela
-       AlunoDAO alunoDAO = new AlunoDAO();
-       List<Aluno> listaAlunos=alunoDAO.getAlunos();//importe java util e o benas.curso
-       
-       DefaultTableModel tabelaAlunos = (DefaultTableModel) tblAlunos.getModel();//pega a estrutura de linhas e colulas, converte para o timo defaulttablemodel 
-       
-       tabelaAlunos.setNumRows(0);//limpar a tabela para preencher com os novos dados
-       
-       //percorer o "listaCursos" e inserir na tabela cursos
-       for(Aluno a: listaAlunos){ //em cada volta do curso atual ele joga o primeiro curso da lista na variavel c e dela pegar as informações
-           Object[] obj=new Object[]{
-               a.getId(),                       //id
-               a.getNomealuno(),                //nomealuno
-               a.getCursoid().getNomecurso(),   //nome curso
+    private void preencheTabela(String filtro) {
+        AlunoDAO alunoDAO = new AlunoDAO();
+        List<Aluno> listaAlunos = alunoDAO.getAlunos(filtro);
 
-           };
-           
-           tabelaAlunos.addRow(obj);//cria uma linha na tabela
-       }
-       
-   }
+        DefaultTableModel tabelaAlunos = (DefaultTableModel) tblAlunos.getModel();
+        tabelaAlunos.setNumRows(0);
+
+        for (Aluno a : listaAlunos) {
+            Object[] obj = new Object[]{
+                a.getId(),
+                a.getNomealuno(),
+                a.getCursoid().getNomecurso(),
+            };
+
+            tabelaAlunos.addRow(obj);
+        }
+    }
 
     /**
      * Creates new form FormRelatorioAlunos
      */
     public FormRelatorioAlunos() {
         initComponents();
-        preencheTabela();
+        preencheTabela("");
     }
 
     /**
@@ -62,8 +53,10 @@ public class FormRelatorioAlunos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAlunos = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        txtNomeAluno = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Relatório de Alunos");
@@ -78,28 +71,62 @@ public class FormRelatorioAlunos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblAlunos);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setText("Filtro Aluno:");
+
+        txtNomeAluno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtNomeAluno.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtNomeAlunoCaretUpdate(evt);
+            }
+        });
+        txtNomeAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeAlunoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(323, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(320, 320, 320))
             .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(145, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(320, 320, 320))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(45, 45, 45)
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNomeAlunoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNomeAlunoCaretUpdate
+        // TODO add your handling code here:
+        preencheTabela(txtNomeAluno.getText());
+    }//GEN-LAST:event_txtNomeAlunoCaretUpdate
+
+    private void txtNomeAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeAlunoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,7 +165,9 @@ public class FormRelatorioAlunos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAlunos;
+    private javax.swing.JTextField txtNomeAluno;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package aulainterfacevisual;
 
 import conexao.Conexao;
+import forms.FormPrincipal;
 
 /**
  *
@@ -19,6 +20,8 @@ public class AulaInterfaceVisual {
         // TODO code application logic here
         Conexao c = new Conexao();
         c.getConexao();
+        FormPrincipal formPrincipal = new FormPrincipal();
+        formPrincipal.setVisible(true);
     }
     
 }
